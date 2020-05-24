@@ -12,11 +12,11 @@ class SinglePageController extends Controller
 		$about=SinglePage::where('meta_key','about_us')->first();
 		return view('backend.pages.single-pages.about',compact('about')); 
 	}
-    public function aboutStore(Request $request){
+    public function postAbout(Request $request){
+    	dd($request);
     	$request->validate([
     		'title_nepali' 	=> 'required',
-    		'meta_key' 		=> 'required|unique:single_pages,meta_key,'.$id,
-    		'date' 			=> 'required',
+    		'meta_key' 		=> 'required|unique:single_pages'
     	]);
 		$about=SinglePage::where('meta_key','about_us')->first();
 		if($about){
@@ -25,16 +25,15 @@ class SinglePageController extends Controller
 	    	$about->title_english 		= $request->title_english;
 	    	$about->description_nepali 	= $request->description_nepali;
 	    	$about->description_english = $request->description_english;
-	    	$about->nepali_date 		= $request->nepali_date;
 	    	$about->save();
 		}else{
+			$about = new SinglePage();
 			$about->meta_key 			= "about_us";
 	    	$about->title_nepali 		= $request->title_nepali;
 	    	$about->title_english 		= $request->title_english;
 	    	$about->title_english 		= $request->title_english;
 	    	$about->description_nepali 	= $request->description_nepali;
 	    	$about->description_english = $request->description_english;
-	    	$about->nepali_date 		= $request->nepali_date;
 	    	$about->save();
 		}
     	

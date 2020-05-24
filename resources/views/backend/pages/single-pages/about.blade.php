@@ -2,22 +2,31 @@
 @section('content')
 
 <div class="x_content">
+		<form method="POST" action="@if(isset($about)) {{route('admin.postAbout',$about->id)}} @else {{route('admin.getAbout')}} @endif">
+			@csrf
+			
 	<div class="row">
-	<form id="demo-form" data-parsley-validate>
-		<div class="col-xs-6">
-		<label for="fullname">Nepali-Title * :</label>
-		<input type="text" id="fullname" class="form-control" name="fullname" required />
+			<div class="col-md-6">
+				<label for="title">Title (नेपालीमा) * :</label>
+				<input type="text" id="title_nepali" class="form-control" name="title_nepali" required />
 
-		<label for="fullname">Nepali-Description * :</label>
-		@include('backend.pages.single-pages.editor')
-	</div>
-		<div class="item form-group">
-			<div class="col-md-6 col-sm-6 offset-md-3">
-				<button class="btn btn-primary" type="button">Cancel</button>
-				<button type="submit" class="btn btn-success">Submit</button>
+				<label for="description">Description (नेपालीमा) * :</label>
+				@include('backend.pages.single-pages.editor_nepali')
+			</div>
+			<div class="col-md-6">
+				<label for="Title">Title * :</label>
+				<input type="text" id="title_english" class="form-control" name="title_english"  />
+
+				<label for="description">Description * :</label>
+				@include('backend.pages.single-pages.editor_english')
 			</div>
 		</div>
-	</form>
-</div>
+		<br>
+			<div class="item form-group">
+				<div class="col-md-6 col-sm-6 offset-md-3" style="text-align: center;">
+					<button type="submit" class="btn btn-success">Submit</button>
+				</div>
+			</div>
+		</form>
 </div>
 @endsection

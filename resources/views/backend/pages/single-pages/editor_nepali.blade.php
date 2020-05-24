@@ -1,4 +1,6 @@
-  <div class="btn-toolbar editor" data-role="editor-toolbar" data-target="#editor-one">
+
+                  <div id="alerts"></div>
+                  <div class="btn-toolbar editor" data-role="editor-toolbar" data-target="#editor-one">
                     <div class="btn-group">
                       <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font"><i class="fa fa-font"></i><b class="caret"></b></a>
                       <ul class="dropdown-menu">
@@ -66,4 +68,6 @@
                       <a class="btn" data-edit="redo" title="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
                     </div>
                   </div>
-                   <div id="editor-one" class="editor-wrapper"></div>
+                  <div id="editor-one" class="editor-wrapper"></div>
+                  
+                  <br />
