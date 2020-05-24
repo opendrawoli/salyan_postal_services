@@ -1,4 +1,4 @@
-
+  <div class="x_content">
                   <div id="alerts"></div>
                   <div class="btn-toolbar editor" data-role="editor-toolbar" data-target="#editor-two">
                     <div class="btn-group">
@@ -68,6 +68,13 @@
                       <a class="btn" data-edit="redo" title="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
                     </div>
                   </div>
+
                   <div id="editor-two" class="editor-wrapper"></div>
+
+                  <textarea name="description_english" id="descr2" style="display:none;"></textarea>
                   
                   <br />
+
+                  <div class="ln_solid"></div>
+
+                </div>
