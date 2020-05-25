@@ -29,12 +29,12 @@
 			<div class="col-md-6">
 	           	<label class="col-form-label " for="first-name">Title(Nepali)<span class="required">*</span>
 	            </label>
-	            <input type="text" name="title_nepali" class="form-control has-feedback-left" id="inputSuccess2" placeholder="Enter Your Title In Nepali" value="{{@$citizen_charter->title_nepali}}">           
+	            <input type="text" name="title_nepali" class="form-control " id="inputSuccess2" placeholder="Enter Your Title In Nepali" value="{{@$citizen_charter->title_nepali}}">           
 			</div>
 			<div class="col-md-6">
 				<label class="col-form-label " for="first-name">Title(English) <span class="required"></span>
 		         </label>
-		        <input type="text" name="title_english" class="form-control has-feedback-left" id="inputSuccess3" placeholder="Enter Your Title In English" value="{{@$citizen_charter->title_english}}">
+		        <input type="text" name="title_english" class="form-control " id="inputSuccess3" placeholder="Enter Your Title In English" value="{{@$citizen_charter->title_english}}">
 		           
 	           	
 		          

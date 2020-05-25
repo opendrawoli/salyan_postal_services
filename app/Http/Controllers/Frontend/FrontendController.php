@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\SinglePage;
 use App\Model\PostalRate;
+use App\Model\Service;
+use App\Model\ActAndRegulation;
 class FrontendController extends Controller
 {
     function getAbout(){
@@ -23,5 +25,13 @@ class FrontendController extends Controller
     }
     function getPostalRates(){
     	return PostalRate::all();
+    }
+
+    function getServices(){
+    	return Service::all();
+    }
+
+     function getActAndRegulation(){
+    	return ActAndRegulation::all();
     }
 }

@@ -4,20 +4,20 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Model\ActAndRegulation;
+use App\Model\Slider;
 use Illuminate\Support\Facades\File;
 
-class ActAndRegulationController extends Controller
+class SliderController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $act_and_regulations=ActAndRegulation::all();
-        return view('backend.pages.act_and_regulation.index',compact('act_and_regulations'));
+        $sliders=Slider::all();
+        return view('backend.pages.sliders.index',compact('sliders'));
     }
 
     /**
@@ -27,7 +27,7 @@ class ActAndRegulationController extends Controller
      */
     public function create()
     {
-        return view('backend.pages.act_and_regulation.create');
+        return view('backend.pages.sliders.create');
     }
 
     /**
@@ -40,22 +40,22 @@ class ActAndRegulationController extends Controller
     {
         $request->validate([
             'title'  => 'required',
-            'file'   =>'required'
+            'description'  => 'required',
+            'file'	=>'required|image|mimes:jpeg,png,jpg,gif,svg'
         ]);
         if($request->hasFile('file')){
           
            $extension = ".".$request->file->getClientOriginalExtension();
            $name = basename($request->file->getClientOriginalName(), $extension).time();
            $name = $name.$extension;
-           $path = $request->file->move('assets/act_and_regulation', $name);
+           $path = $request->file->move('assets/sliders', $name);
          }
 
-        $act_and_regulation = new ActAndRegulation();
-        $act_and_regulation->title       = $request->title;
-        $act_and_regulation->description      = $request->description;
-        $act_and_regulation->file     = $path;
-        $act_and_regulation->date = $request->date;
-        $act_and_regulation->save();
+        $slider = new Slider();
+        $slider->title       = $request->title;;
+        $slider->description       = $request->description;;
+        $slider->image     = $path;
+        $slider->save();
         return back()->with('message','Added');
     }
 
@@ -78,8 +78,8 @@ class ActAndRegulationController extends Controller
      */
     public function edit($id)
     {
-        $act_and_regulation=ActAndRegulation::find($id);
-        return view('backend.pages.act_and_regulation.create',compact('act_and_regulation'));
+        $sliders=Slider::find($id);
+        return view('backend.pages.sliders.create',compact('sliders'));
     }
 
     /**
@@ -93,24 +93,25 @@ class ActAndRegulationController extends Controller
     {
         $request->validate([
             'title'  => 'required',
+            'description'  => 'required',
+            'image'	=>'image|mimes:jpeg,png,jpg,gif,svg'
         ]);
 
-        $act_and_regulation = ActAndRegulation::find($id);
+        $slider = Slider::find($id);
 
         if($request->hasFile('file')){
-          File::delete($policy_program->file);
+          File::delete($slider->image);
            $extension = ".".$request->file->getClientOriginalExtension();
            $name = basename($request->file->getClientOriginalName(), $extension).time();
            $name = $name.$extension;
-           $path = $request->file->move('assets/act_and_regulation', $name);
+           $path = $request->file->move('assets/sliders', $name);
          }
 
         
-        $act_and_regulation->title       = $request->title;
-        $act_and_regulation->description = $request->description;
-        $act_and_regulation->file         = $request->hasFile('file')?$path : $act_and_regulation->file;
-        $act_and_regulation->date         = $request->date;
-        $act_and_regulation->save();
+        $slider->title       = $request->title;
+        $slider->description       = $request->description;
+        $slider->image         = $request->hasFile('file')?$path : $slider->image;
+        $slider->save();
         return back()->with('message','Updated');
     }
 
@@ -122,9 +123,24 @@ class ActAndRegulationController extends Controller
      */
     public function destroy($id)
     {
-         $act_and_regulation = ActAndRegulation::find($id);
-         File::delete($act_and_regulation->file);         
-        ActAndRegulation::destroy($id);
+         $slider = Slider::find($id);
+         File::delete($slider->image);         
+        Slider::destroy($id);
         return back()->with('message','successfully deleted');
+    }
+
+    function activeInactiveSlider($id){
+    	$sliders=Slider::where('status',1)->get();
+    	$slider=Slider::find($id);
+
+    	if(count($sliders)>4){
+    		if($sider->status==0){
+    			return back()->with('message','You can not active more than 5 slider');
+    		}
+    	}
+    	
+    	$slider->status=($slider->status==1)? 0: 1;
+    	$slider->save();
+    	return back();
     }
 }

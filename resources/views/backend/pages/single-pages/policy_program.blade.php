@@ -28,7 +28,7 @@
 			<div class="col-md-6">
 	           	<label class="col-form-label " for="first-name">Title(Nepali)<span class="required">*</span>
 	            </label>
-	            <input type="text" name="title_nepali" class="form-control has-feedback-left" id="inputSuccess2" placeholder="Enter Your Title In Nepali" value="{{@$policy_program->title_nepali}}">
+	            <input type="text" name="title_nepali" class="form-control" id="inputSuccess2" placeholder="Enter Your Title In Nepali" value="{{@$policy_program->title_nepali}}">
 	           	<label class="col-form-label " for="first-name">Description(Nepali) <span class="required">*</span>
 	            </label>
 	            <textarea name="description_nepali">{{@$policy_program->description_nepali}}</textarea>		           
@@ -36,7 +36,7 @@
 			<div class="col-md-6">
 				<label class="col-form-label " for="first-name">Title(English) <span class="required"></span>
 		         </label>
-		        <input type="text" name="title_english" class="form-control has-feedback-left" id="inputSuccess3" placeholder="Enter Your Title In English" value="{{@$policy_program->title_english}}">
+		        <input type="text" name="title_english" class="form-control" id="inputSuccess3" placeholder="Enter Your Title In English" value="{{@$policy_program->title_english}}">
 		           
 	           	<label class="col-form-label " for="first-name">Description(English) <span class="required">*</span>
 	            </label>
@@ -48,7 +48,7 @@
 			<div class="col-md-6">
 	           	<label class="col-form-label " for="first-name">File Upload (Pdf,Image,Doc)<span class="required"></span>
 	            </label>
-	            <input type="file" name="file" class="form-control has-feedback-left" id="inputSuccess4" placeholder="Enter Your Title In Nepali" value="{{@$underneath->file}}">
+	            <input type="file" name="file" class="form-control" id="inputSuccess4" placeholder="Enter Your Title In Nepali" value="{{@$underneath->file}}">
 	                
 			</div>
 			
