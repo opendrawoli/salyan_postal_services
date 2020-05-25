@@ -56,8 +56,10 @@ class SinglePageController extends Controller
     	$policy_program=SinglePage::where('meta_key','policy_program')->first();
 
     	if($request->hasFile('file')){
-			if($policy_program->file){    			
-				File::delete($policy_program->file);
+			if($policy_program){
+				if($policy_program->file){    			
+					File::delete($policy_program->file);
+				}
 			}
            $extension = ".".$request->file->getClientOriginalExtension();
            $name = basename($request->file->getClientOriginalName(), $extension).time();
@@ -84,6 +86,53 @@ class SinglePageController extends Controller
 	    	$policy_program->description_english = $request->description_english;
 	    	$policy_program->file = $request->file? $path:'';
 	    	$policy_program->save();
+	    	return back()->with('message','Added');
+		}
+    	
+    }
+
+
+	/*=====================================
+				Underneath Page
+	============================================*/
+    function getUnderneath(){
+		$underneath=SinglePage::where('meta_key','underneath')->first();
+		return view('backend.pages.single-pages.underneath',compact('underneath')); 
+	}
+    public function postUnderneath(Request $request){
+    	$request->validate([
+    		'title_nepali' 	=> 'required'
+    	]);
+    	$path='';
+    	$underneath=SinglePage::where('meta_key','underneath')->first();
+
+    	if($request->hasFile('file')){
+			if($underneath){
+				if($underneath->file){    			
+					File::delete($underneath->file);
+				}
+			}			
+           $extension = ".".$request->file->getClientOriginalExtension();
+           $name = basename($request->file->getClientOriginalName(), $extension).time();
+           $name = $name.$extension;
+           $path = $request->file->move('assets/single-page', $name);
+         }
+    	
+		
+		if($underneath){
+	    	$underneath->title_nepali 		= $request->title_nepali;
+	    	$underneath->title_english 		= $request->title_english;
+	    	$underneath->file = $request->file?$path:$underneath->file;
+	    	$underneath->save();
+	    	return back()->with('message','Update');
+		}else{
+
+			$underneath = new SinglePage();
+			$underneath->meta_key 			= "underneath";
+	    	$underneath->title_nepali 		= $request->title_nepali;
+	    	$underneath->title_english 		= $request->title_english;
+	    	$underneath->file = $request->file? $path:'';
+	    	$underneath->save();
 	    	return back()->with('message','Added');
 		}
     	

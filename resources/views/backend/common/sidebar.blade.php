@@ -7,7 +7,7 @@
       <li><a><i class="fa fa-home"></i> हाम्रो बारेमा <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <li><a  href="{{route('admin.getAbout')}}">परिचय</a></li>
-          <li><a  href="submenu3.html">कार्यालय अन्तर्गतका निकायहरू</a></li>
+          <li><a  href="{{route('admin.getUnderneath')}}">कार्यालय अन्तर्गतका निकायहरू</a></li>
           <li><a  href="submenu3.html">कर्मचारी विवरण</a></li>
           <li><a  href="submenu3.html">नागरिक बडापत्र</a></li>
         </ul>

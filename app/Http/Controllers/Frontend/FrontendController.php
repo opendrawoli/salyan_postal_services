@@ -13,4 +13,8 @@ class FrontendController extends Controller
     function getPolicyProgram(){
     	return SinglePage::where('meta_key','policy_program')->first();
     }
+
+     function getUnderneath(){
+    	return SinglePage::where('meta_key','underneath')->first();
+    }
 }
