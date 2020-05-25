@@ -44,15 +44,19 @@
                             <td>{{$service->title_nepali}}</td>
                             <td>{{$service->title_english}} </td>
                             <td>{{$service->file}}</td>
-                            <td>
-                               {!! Form::open(['method'=>'DELETE','route'=>['admin.service.destroy',$service->id]]) !!}
-                              <a href="{{ route('admin.service.edit', $service->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('के तपाई यसलाई साच्ची हटाउन चाहनुन्छ ?')" title="Detete"><i class="fa fa-trash"></i></button>
-                                {{ Form::close()}}
-                            </td>
-                            @endforeach
-                            @endif
+                           <td>
+                             <a href="{{route('admin.service.edit',$service->id) }}" class="btn btn-info btn-sm">Edit</a>
+                                <a href="javascript:void(0);" class="btn btn-danger btn-sm" onclick="deleteRow('service{{$service->id }}')">Delete</a>
+
+                                <form id="service{{$service->id}}" action="{{route('admin.service.destroy',$service->id)}}" method="post">
+                                  @csrf
+                                  @method('DELETE')
+                                </form>
+                           </td>
+                           
                           </tr>
+                           @endforeach
+                            @endif
                         </tbody>
                       </table>
           

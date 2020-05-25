@@ -23,3 +23,4 @@ Route::get('about','Frontend\FrontendController@getAbout');
 Route::get('policy_program','Frontend\FrontendController@getPolicyProgram');
 Route::get('underneath','Frontend\FrontendController@getUnderneath');
 Route::get('citizen_charter','Frontend\FrontendController@getCitizenCharter');
+Route::get('postal_rates','Frontend\FrontendController@getPostalRates');
