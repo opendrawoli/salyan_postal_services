@@ -22,3 +22,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('about','Frontend\FrontendController@getAbout');
 Route::get('policy_program','Frontend\FrontendController@getPolicyProgram');
 Route::get('underneath','Frontend\FrontendController@getUnderneath');
+Route::get('citizen_charter','Frontend\FrontendController@getCitizenCharter');

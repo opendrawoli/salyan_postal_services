@@ -137,4 +137,49 @@ class SinglePageController extends Controller
 		}
     	
     }
+    /*=====================================
+				Citizen Charter Page
+	============================================*/
+    function getCitizenCharter(){
+		$citizen_charter=SinglePage::where('meta_key','citizen_charter')->first();
+		return view('backend.pages.single-pages.citizencharter',compact('citizen_charter')); 
+	}
+    public function postCitizenCharter(Request $request){
+    	$request->validate([
+    		'title_nepali' 	=> 'required'
+    	]);
+    	$path='';
+    	$citizen_charter=SinglePage::where('meta_key','citizen_charter')->first();
+
+    	if($request->hasFile('file')){
+			if($citizen_charter){
+				if($citizen_charter->file){    			
+					File::delete($citizen_charter->file);
+				}
+			}			
+           $extension = ".".$request->file->getClientOriginalExtension();
+           $name = basename($request->file->getClientOriginalName(), $extension).time();
+           $name = $name.$extension;
+           $path = $request->file->move('assets/single-page', $name);
+         }
+    	
+		
+		if($citizen_charter){
+	    	$citizen_charter->title_nepali 		= $request->title_nepali;
+	    	$citizen_charter->title_english 		= $request->title_english;
+	    	$citizen_charter->file = $request->file?$path:$citizen_charter->file;
+	    	$citizen_charter->save();
+	    	return back()->with('message','Update');
+		}else{
+
+			$citizen_charter = new SinglePage();
+			$citizen_charter->meta_key 			= "citizen_charter";
+	    	$citizen_charter->title_nepali 		= $request->title_nepali;
+	    	$citizen_charter->title_english 		= $request->title_english;
+	    	$citizen_charter->file = $request->file? $path:'';
+	    	$citizen_charter->save();
+	    	return back()->with('message','Added');
+		}
+    	
+    }
 }

@@ -34,6 +34,16 @@ Route::namespace('Backend')->prefix('admin')->as('admin.')->group( function(){
 	/* Underneath Page */
 	Route::get('/underneath','SinglePageController@getUnderneath')->name('getUnderneath');
 	Route::post('/underneath','SinglePageController@postUnderneath')->name('postUnderneath');
+
+	/* Citizen Charter Page */
+	Route::get('/citizen-charter','SinglePageController@getCitizenCharter')->name('getCitizenCharter');
+	Route::post('/citizen-charter','SinglePageController@postCitizenCharter')->name('postCitizenCharter');
+
+	/* Citizen Charter Page */
+	Route::resource('postal_rates','PostalRatesController');
+
+
+
 });
 
 

@@ -9,7 +9,7 @@
           <li><a  href="{{route('admin.getAbout')}}">परिचय</a></li>
           <li><a  href="{{route('admin.getUnderneath')}}">कार्यालय अन्तर्गतका निकायहरू</a></li>
           <li><a  href="submenu3.html">कर्मचारी विवरण</a></li>
-          <li><a  href="submenu3.html">नागरिक बडापत्र</a></li>
+          <li><a  href="{{route('admin.getCitizenCharter')}}">नागरिक बडापत्र</a></li>
         </ul>
       </li>
        <li><a href="{{route('admin.getPolicyProgram')}}"><i class="fa fa-home"></i> नीति तथा कार्यक्रम <span class="fa fa-chevron"></span></a>
@@ -27,8 +27,9 @@
         </ul>
       </li>
      <li><a><i class="fa fa-home"></i> क्रियाकलापहरू <span class="fa fa-chevron"></span></a></li>
-     <li><a><i class="fa fa-home"></i> हुलाक दर <span class="fa fa-chevron"></span></a></li>
+     <li><a href="{{route('admin.postal_rates.index')}}"><i class="fa fa-home"></i> हुलाक दर <span class="fa fa-chevron"></span></a></li>
      <li><a><i class="fa fa-home"></i> सम्पर्क गर्नुहोस <span class="fa fa-chevron"></span></a></li>
+     <li><a><i class="fa fa-home"></i> Settings<span class="fa fa-chevron"></span></a></li>
     
     </ul>
   </div>
