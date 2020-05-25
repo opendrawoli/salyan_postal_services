@@ -23,9 +23,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::namespace('Backend')->prefix('admin')->as('admin.')->group( function(){
-//si
-   Route::get('/about','SinglePageController@getAbout')->name('getAbout');
+	/* about Page */
+   	Route::get('/about','SinglePageController@getAbout')->name('getAbout');
 	Route::post('/about','SinglePageController@postAbout')->name('postAbout');
-	//
+
+	/* Policy Program Page */
+	Route::get('/policy_program','SinglePageController@getPolicyProgram')->name('getPolicyProgram');
+	Route::post('/policy_program','SinglePageController@postPolicyProgram')->name('postPolicyProgram');
 });
 

@@ -22,6 +22,7 @@
     <!-- Custom styling plus plugins -->
     <link href="{{asset('assets/build/css/custom.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/editor.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/images/favicon-32x32.png')}}" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -38,11 +39,11 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="{{asset('assets/images/apple-touch-icon.png')}}" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <span> कार्यालय</span>
+                <h2>सल्यान</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
