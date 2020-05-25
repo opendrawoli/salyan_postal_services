@@ -68,6 +68,6 @@
                       <a class="btn" data-edit="redo" title="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
                     </div>
                   </div>
-                  <div id="editor-two" class="editor-wrapper"></div>
-                  
+                  <div id="editor-two" class="editor-wrapper">
+                  </div>
                   <br />

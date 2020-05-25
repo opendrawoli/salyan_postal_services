@@ -21,6 +21,7 @@
 
     <!-- Custom styling plus plugins -->
     <link href="{{asset('assets/build/css/custom.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('assets/vendors/simplemde/simplemde.min.css')}}">
   </head>
 
   <body class="nav-md">
