@@ -53,14 +53,19 @@ class SinglePageController extends Controller
     		'title_nepali' 	=> 'required'
     	]);
     	$path='';
+    	$policy_program=SinglePage::where('meta_key','policy_program')->first();
+
     	if($request->hasFile('file')){
+			if($policy_program->file){    			
+				File::delete($policy_program->file);
+			}
            $extension = ".".$request->file->getClientOriginalExtension();
            $name = basename($request->file->getClientOriginalName(), $extension).time();
            $name = $name.$extension;
-           $path = $request->file->move('assets/images/single-page', $name);
+           $path = $request->file->move('assets/single-page', $name);
          }
     	
-		$policy_program=SinglePage::where('meta_key','policy_program')->first();
+		
 		if($policy_program){
 	    	$policy_program->title_nepali 		= $request->title_nepali;
 	    	$policy_program->title_english 		= $request->title_english;
