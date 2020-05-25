@@ -23,6 +23,7 @@
     <!-- Custom styling plus plugins -->
     <link href="{{asset('assets/build/css/custom.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/nepali-date.css')}}" rel="stylesheet">
     <link href="{{asset('assets/editor.css')}}" rel="stylesheet">
     <link href="{{asset('assets/images/favicon-32x32.png')}}" rel="stylesheet">
   </head>
@@ -199,12 +200,39 @@
     <script src="{{asset('assets/vendors/google-code-prettify/src/prettify.js')}}"></script>
     <script src="{{asset('assets/vendors/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
     <!-- Custom Theme Scripts -->
+ 
+
     <script src="{{asset('assets/build/js/custom.min.js')}}"></script>
     <script src="{{asset('assets/editor.js')}}"></script>
+    <script src="{{asset('assets/nepali-date.js')}}"></script>
  <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
  <script>
         CKEDITOR.replace( 'description_nepali' );
         CKEDITOR.replace( 'description_english' );
+         $('.nepaliDate').nepaliDatePicker({
+          npdMonth: true,
+          npdYear: true,
+        });
+        $('.nepaliDate').val(getNepaliDate());
+
+
+        function deleteRow(form_id){
+            Swal.fire({
+              title: 'साबधानी ',
+              text: "के तपाई सुनिश्चित हुनुहुन्छ ?",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Confirm'
+            }).then((result) => {
+              if (result.value) {
+                $('#'+form_id).submit();
+              }
+            })
+        }
+
 </script>
   </body>
 </html>

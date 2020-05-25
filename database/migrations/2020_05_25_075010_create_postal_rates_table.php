@@ -15,6 +15,10 @@ class CreatePostalRatesTable extends Migration
     {
         Schema::create('postal_rates', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('description')->nullable();
+            $table->string('file');
+            $table->string('date');
             $table->timestamps();
         });
     }
