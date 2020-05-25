@@ -99,14 +99,16 @@ class ServiceController extends Controller
         ]);
          $path='';
         $service = Service::find($id);
-         if($request->hasFile('file')){
+            if($service->file){              
+                    File::delete($service->file);
+
            $extension = ".".$request->file->getClientOriginalExtension();
            $name = basename($request->file->getClientOriginalName(), $extension).time();
            $name = $name.$extension;
            $path = $request->file->move('assets/service', $name);
          }
-          $service->file = $request->file;
-         $service->title_nepali = $request->title_nepali;
+        $service->file = $request->file;
+        $service->title_nepali = $request->title_nepali;
         $service->title_english = $request->title_english;
         $service->description_nepali = $request->description_nepali;
         $service->description_english = $request->description_english;
@@ -123,7 +125,12 @@ class ServiceController extends Controller
     public function destroy($id)
     {
         $service = Service::find($id);
+        if($service->file){              
+            File::delete($service->file);
+        }
         $service->destroy($id);
         return back()->with('message','successfully deleted');
     }
+    
+       
 }
