@@ -21,7 +21,11 @@
 
     <!-- Custom styling plus plugins -->
     <link href="{{asset('assets/build/css/custom.min.css')}}" rel="stylesheet">
+<<<<<<< HEAD
     <link rel="stylesheet" href="{{asset('assets/vendors/simplemde/simplemde.min.css')}}">
+=======
+    <link href="{{asset('assets/editor.css')}}" rel="stylesheet">
+>>>>>>> 9d56577bc7bb5261b34080a10958e84d0c9370c4
   </head>
 
   <body class="nav-md">
@@ -196,6 +200,13 @@
 
     <!-- Custom Theme Scripts -->
     <script src="{{asset('assets/build/js/custom.min.js')}}"></script>
+    <script src="{{asset('assets/editor.js')}}"></script>
+ <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+ <script>
+        CKEDITOR.replace( 'description_nepali' );
+        CKEDITOR.replace( 'description_english' );
 
+</script>
+@yield('scripts')
   </body>
 </html>

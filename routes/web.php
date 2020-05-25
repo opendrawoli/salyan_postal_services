@@ -22,10 +22,14 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::namespace('Backend')->prefix('admin')->as('admin.')->middleware('auth')->group( function(){
-//si
-   Route::get('/about','SinglePageController@getAbout')->name('getAbout');
+Route::namespace('Backend')->prefix('admin')->as('admin.')->group( function(){
+//==================introduction===================================
+    Route::get('/about','SinglePageController@getAbout')->name('getAbout');
 	Route::post('/about','SinglePageController@postAbout')->name('postAbout');
+	//
+	//=====================underneath==============================
+   Route::get('/underneath','SinglePageController@getUnderneath')->name('getUnderneath');
+   Route::post('/underneath','SinglePageController@postUnderneath')->name('postUnderneath');
 	//
 });
 

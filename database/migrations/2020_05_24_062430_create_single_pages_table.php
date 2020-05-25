@@ -20,8 +20,7 @@ class CreateSinglePagesTable extends Migration
             $table->string('title_english')->nullable();
             $table->text('description_nepali')->nullable();
             $table->text('description_english')->nullable();
-            $table->text('nepali_date');
-            $table->string('file');
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }
