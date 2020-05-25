@@ -35,7 +35,14 @@
         </ul>
       </li>
      <li><a><i class="fa fa-home"></i> क्रियाकलापहरू <span class="fa fa-chevron"></span></a></li>
-     <li><a href="{{route('admin.postal_rates.index')}}"><i class="fa fa-home"></i> हुलाक दर <span class="fa fa-chevron"></span></a></li>
+    
+      <li><a><i class="fa fa-home"></i>  हुलाक दर <span class="fa fa-chevron-down"></span></a>              
+        <ul class="nav child_menu">
+          <li><a href="{{route('admin.postal_rates.create')}}">नयाँ  थप्नुहोस</a></li>
+          <li><a href="{{route('admin.postal_rates.index')}}">सबै हुलाक दर </a></li>
+        </ul>
+      </li>
+
      <li><a><i class="fa fa-home"></i> सम्पर्क गर्नुहोस <span class="fa fa-chevron"></span></a></li>
      <li><a><i class="fa fa-home"></i> Settings<span class="fa fa-chevron"></span></a></li>
     
