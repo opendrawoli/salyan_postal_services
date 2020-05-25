@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\SinglePage;
+use Illuminate\Support\Facades\File;
 class SinglePageController extends Controller
 {
-	
+	/*=====================================
+				About Page
+	============================================*/
 	function getAbout(){
 		$about=SinglePage::where('meta_key','about_us')->first();
 		return view('backend.pages.single-pages.about',compact('about')); 
@@ -33,67 +36,89 @@ class SinglePageController extends Controller
 	    	$about->description_nepali 	= $request->description_nepali;
 	    	$about->description_english = $request->description_english;
 	    	$about->save();
-	    	return back()->with('message','Added successfully');
-			}
+	    	return back()->with('message','Added');
+		}
     	
     }
 
 
-
-    function getUnderneath(){
+    //===========Underneath Page================
+	//============================================
+	function getUnderneath(){
 		$about=SinglePage::where('meta_key','underneath_org')->first();
 		return view('backend.pages.single-pages.underneath',compact('about')); 
 	}
     public function postUnderneath(Request $request){
+    	dd($request);
     	$request->validate([
     		'title_nepali' 	=> 'required',
-    		'file'			=> 'required'
+    		'file' 	=> 'required',
     	]);
-    	 
+    	$path='';
+    	if($request->hasFile('file')){
+           $extension = ".".$request->file->getClientOriginalExtension();
+           $name = basename($request->file->getClientOriginalName(), $extension).time();
+           $name = $name.$extension;
+           $path = $request->file->move('assets/images/single-page', $name);
+         }
 		$about=SinglePage::where('meta_key','underneath_org')->first();
 		if($about){
-			if ($request->hasfile('file'))
-        	{
-	            $file = $request->file('file');
-	            dd($file);
-	            $filename = $file->getClientOriginalName();
-	           $request->file->public_path('images/about',$filename);
-	           $about->file=$filename;
-        	}
-        	 
-	    	$oldFile = $request->file;
 	    	$about->title_nepali 		= $request->title_nepali;
 	    	$about->title_english 		= $request->title_english;
 	    	$about->save();
-	    	 if($oldFile != $about->image){
-            $this->removeFile($oldFile);
-        	}
 	    	return back()->with('message','Updated successfully');
 		}else{
 
 			$about = new SinglePage();
-			if ($request->hasfile('file'))
-        	{
-	             $file = $request->file('file');
-	            $filename = $file->getClientOriginalName();
-	           $request->file->public_path('images/about',$filename);
-	           $about->file=$filename;
-        	}
-        	
-			$about->meta_key 			= "underneath_org";
+			$about->meta_key 			= "about_us";
 	    	$about->title_nepali 		= $request->title_nepali;
 	    	$about->title_english 		= $request->title_english;
 	    	$about->save();
-	    	return back()->with('message','Added successfully');
-			}
-        }
+	    	return back()->with('message','Added');
+		}
+    	
+    }
 
-        public function removeFile($file){
-        if(! empty($file)){
-            $filePath      = public_path('images/about') . '/'. $file;
-            if(file_exists($filePath))
-                unlink($filePath);
+	/*=====================================
+				Privacy And Policy Page
+	============================================*/
+    function getPolicyProgram(){
+		$policy_program=SinglePage::where('meta_key','policy_program')->first();
+		return view('backend.pages.single-pages.policy_program',compact('policy_program')); 
+	}
+    public function postPolicyProgram(Request $request){
+    	$request->validate([
+    		'title_nepali' 	=> 'required'
+    	]);
+    	$path='';
+    	if($request->hasFile('file')){
+           $extension = ".".$request->file->getClientOriginalExtension();
+           $name = basename($request->file->getClientOriginalName(), $extension).time();
+           $name = $name.$extension;
+           $path = $request->file->move('assets/images/single-page', $name);
+         }
+    	
+		$policy_program=SinglePage::where('meta_key','policy_program')->first();
+		if($policy_program){
+	    	$policy_program->title_nepali 		= $request->title_nepali;
+	    	$policy_program->title_english 		= $request->title_english;
+	    	$policy_program->description_nepali 	= $request->description_nepali;
+	    	$policy_program->description_english = $request->description_english;
+	    	$policy_program->file = $request->file?$path:$policy_program->file;
+	    	$policy_program->save();
+	    	return back()->with('message','Update');
+		}else{
 
-        }
+			$policy_program = new SinglePage();
+			$policy_program->meta_key 			= "policy_program";
+	    	$policy_program->title_nepali 		= $request->title_nepali;
+	    	$policy_program->title_english 		= $request->title_english;
+	    	$policy_program->description_nepali 	= $request->description_nepali;
+	    	$policy_program->description_english = $request->description_english;
+	    	$policy_program->file = $request->file? $path:'';
+	    	$policy_program->save();
+	    	return back()->with('message','Added');
+		}
+    	
     }
 }

@@ -12,11 +12,11 @@
           <li><a  href="submenu3.html">नागरिक बडापत्र</a></li>
         </ul>
       </li>
-       <li><a><i class="fa fa-home"></i> नीति तथा कार्यक्रम <span class="fa fa-chevron"></span></a>
+       <li><a href="{{route('admin.getPolicyProgram')}}"><i class="fa fa-home"></i> नीति तथा कार्यक्रम <span class="fa fa-chevron"></span></a>
       </li>
        <li><a><i class="fa fa-home"></i> ऐन तथा नियमावली <span class="fa fa-chevron"></span></a></li>
 
-      <li><a><i class="fa fa-home"></i> हाम्रो बारेमा <span class="fa fa-chevron-down"></span></a>              
+      <li><a><i class="fa fa-home"></i> मिडिया सेन्टर <span class="fa fa-chevron-down"></span></a>              
         <ul class="nav child_menu">
           <li><a href="form.html">सूचना</a></li>
           <li><a href="form_advanced.html">सूचनाको हक</a></li>
@@ -29,7 +29,6 @@
      <li><a><i class="fa fa-home"></i> क्रियाकलापहरू <span class="fa fa-chevron"></span></a></li>
      <li><a><i class="fa fa-home"></i> हुलाक दर <span class="fa fa-chevron"></span></a></li>
      <li><a><i class="fa fa-home"></i> सम्पर्क गर्नुहोस <span class="fa fa-chevron"></span></a></li>
-     <li><a><i class="fa fa-home"></i> नीति तथा कार्यक्रम <span class="fa fa-chevron"></span></a></li>
     
     </ul>
   </div>

@@ -41,7 +41,7 @@
 			</div>
 		</div>
             <div style="text-align: center;">
-            	<label for="">Upload file</label>
+            	<label>Upload file</label>
             	<input type="file" name="file" value="{{@$about->file}}">
             </div>       
           <div class="ln_solid"></div>
