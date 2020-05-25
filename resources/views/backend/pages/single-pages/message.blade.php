@@ -8,14 +8,14 @@
           </ul>
         </div>
         @endif
-      </div>
 
-
-@if(session('message'))
+        @if(session('message'))
     <div id="successmsg" class="alert alert-info">
         {{ session('message') }}
     </div>
- @endif
+       @endif
+      </div>
+
     @section('scripts')
     <script type="text/javascript">
       $('#successmsg').fadeOut(1500);

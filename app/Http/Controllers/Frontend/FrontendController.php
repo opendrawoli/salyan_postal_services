@@ -16,5 +16,8 @@ class FrontendController extends Controller
 
      function getUnderneath(){
     	return SinglePage::where('meta_key','underneath')->first();
+    } 
+    function getCitizenCharter(){
+    	return SinglePage::where('meta_key','citizen_charter')->first();
     }
 }

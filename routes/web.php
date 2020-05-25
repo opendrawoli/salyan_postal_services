@@ -40,6 +40,15 @@ Route::namespace('Backend')->prefix('admin')->as('admin.')->group( function(){
 
 	/*    Service Route*/
 	Route::resource('/service','ServiceController');
+	/* Citizen Charter Page */
+	Route::get('/citizen-charter','SinglePageController@getCitizenCharter')->name('getCitizenCharter');
+	Route::post('/citizen-charter','SinglePageController@postCitizenCharter')->name('postCitizenCharter');
+
+	/* Citizen Charter Page */
+	Route::resource('postal_rates','PostalRatesController');
+
+
+
 });
 
 

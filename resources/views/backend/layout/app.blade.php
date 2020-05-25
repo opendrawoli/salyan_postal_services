@@ -16,12 +16,13 @@
     <link href="{{asset('assets/vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
     <!-- NProgress -->
     <link href="{{asset('assets/vendors/nprogress/nprogress.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css')}}" rel="stylesheet">
     <!-- bootstrap-wysiwyg -->
     <link href="{{asset('assets/vendors/google-code-prettify/bin/prettify.min.css')}}" rel="stylesheet">
 
     <!-- Custom styling plus plugins -->
     <link href="{{asset('assets/build/css/custom.min.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('assets/vendors/simplemde/simplemde.min.css')}}">
+    <link href="{{asset('assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/editor.css')}}" rel="stylesheet">
     <link href="{{asset('assets/images/favicon-32x32.png')}}" rel="stylesheet">
   </head>
@@ -186,6 +187,7 @@
     <!-- jQuery -->
     <script src="{{asset('assets/vendors/jquery/dist/jquery.min.js')}}"></script>
     <!-- Bootstrap -->
+    <script src="{{asset('assets/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>
    <script src="{{asset('assets/vendors/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
     <!-- FastClick -->
     <script src="{{asset('assets/vendors/fastclick/lib/fastclick.js')}}"></script>
@@ -195,7 +197,7 @@
     <script src="{{asset('assets/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js')}}"></script>
     <script src="{{asset('assets/vendors/jquery.hotkeys/jquery.hotkeys.js')}}"></script>
     <script src="{{asset('assets/vendors/google-code-prettify/src/prettify.js')}}"></script>
-
+    <script src="{{asset('assets/vendors/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
     <!-- Custom Theme Scripts -->
     <script src="{{asset('assets/build/js/custom.min.js')}}"></script>
     <script src="{{asset('assets/editor.js')}}"></script>

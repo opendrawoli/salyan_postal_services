@@ -5,16 +5,10 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Service;
-use Intervention\Image\Facades\Image;
+use File;
 class ServiceController extends Controller
 {
-     protected $uploadPath;
-
-    public function __construct()
-    {
-         $this->middleware('auth');
-        $this->uploadPath = public_path(config('cms.file.directory'));
-    }
+  
     /**
      * Display a listing of the resource.
      *
@@ -42,30 +36,23 @@ class ServiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Service $service)
+    public function store(Request $request)
     {
+
         $request->validate([
             'title_nepali'  => 'required',
             'description_nepali'  => 'required',
+            'file'  => 'required',
         ]);
-         if ($request->hasfile('file'))
-        {
-             $width = Config('cms.file.thumbnail.width');
-             $height = Config('cms.file.thumbnail.height');
-            $file = $request->file('file');
-            $filename = $file->getClientOriginalName();
-            $destination = public_path(Config('cms.file.directory'));
-            $successUploaded = ($file->move($destination,$filename));
-
-            if ($successUploaded) {
-                $extension = $file->getClientOriginalExtension();
-                $thumbnail = str_replace(".{$extension}","_thumb.{$extension}", $filename);
-                Image::make($destination.'/'. $filename)
-                ->resize($width,$height)
-                ->save($destination.'/'. $thumbnail);
-            }
-            $file->file=$thumbnail;
-        }
+        $path='';
+         $service = new Service(); 
+        if($request->hasFile('file')){
+           $extension = ".".$request->file->getClientOriginalExtension();
+           $name = basename($request->file->getClientOriginalName(), $extension).time();
+           $name = $name.$extension;
+           $path = $request->file->move('assets/service', $name);
+         }
+        $service->file = $request->file;
         $service->title_nepali = $request->title_nepali;
         $service->title_english = $request->title_english;
         $service->description_nepali = $request->description_nepali;
@@ -94,7 +81,7 @@ class ServiceController extends Controller
     public function edit($id)
     {
         $service = Service::find($id);
-       return view('backend.pages.services.edit',compact('service'));
+       return view('backend.pages.services.create',compact('service'));
     }
 
     /**
@@ -110,25 +97,15 @@ class ServiceController extends Controller
             'title_nepali'  => 'required',
             'description_nepali'  => 'required',
         ]);
+         $path='';
         $service = Service::find($id);
-         if ($request->hasfile('file'))
-        {
-             $width = Config('cms.file.thumbnail.width');
-             $height = Config('cms.file.thumbnail.height');
-            $file = $request->file('file');
-            $filename = $file->getClientOriginalName();
-            $destination = public_path(Config('cms.file.directory'));
-            $successUploaded = ($file->move($destination,$filename));
-
-            if ($successUploaded) {
-                $extension = $file->getClientOriginalExtension();
-                $thumbnail = str_replace(".{$extension}","_thumb.{$extension}", $filename);
-                Image::make($destination.'/'. $filename)
-                ->resize($width,$height)
-                ->save($destination.'/'. $thumbnail);
-            }
-            $file->file=$thumbnail;
-        }
+         if($request->hasFile('file')){
+           $extension = ".".$request->file->getClientOriginalExtension();
+           $name = basename($request->file->getClientOriginalName(), $extension).time();
+           $name = $name.$extension;
+           $path = $request->file->move('assets/service', $name);
+         }
+          $service->file = $request->file;
          $service->title_nepali = $request->title_nepali;
         $service->title_english = $request->title_english;
         $service->description_nepali = $request->description_nepali;
@@ -146,7 +123,7 @@ class ServiceController extends Controller
     public function destroy($id)
     {
         $service = Service::find($id);
-        $services->destroy($id);
+        $service->destroy($id);
         return back()->with('message','successfully deleted');
     }
 }

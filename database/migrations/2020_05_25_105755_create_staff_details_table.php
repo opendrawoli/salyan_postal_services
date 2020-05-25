@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateServicesTable extends Migration
+class CreateStaffDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateServicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('services', function (Blueprint $table) {
+        Schema::create('staff_details', function (Blueprint $table) {
             $table->id();
-            $table->string('title_nepali');
-            $table->text('description_nepali');
-            $table->string('title_english')->nullable();
-            $table->text('description_english')->nullable();
+            $table->string('name');
+            $table->string('designation');
+            $table->string('email')->nullable();
+            $table->string('phone');
             $table->string('file');
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ class CreateServicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('services');
+        Schema::dropIfExists('staff_details');
     }
 }
