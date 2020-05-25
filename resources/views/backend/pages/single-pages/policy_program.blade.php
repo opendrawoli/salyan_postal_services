@@ -21,7 +21,7 @@
       <div class="x_content">
         <br />
 
-        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{route('admin.postPolicyProgram')}}" method="POST">
+        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{route('admin.postPolicyProgram')}}" method="POST" enctype="multipart/form-data">
 			@csrf
           @method('POST')
 		<div class="row">
@@ -48,7 +48,7 @@
 			<div class="col-md-6">
 	           	<label class="col-form-label " for="first-name">File Upload (Pdf,Image,Doc)<span class="required"></span>
 	            </label>
-	            <input type="file" name="file" class="form-control has-feedback-left" id="inputSuccess4" placeholder="Enter Your Title In Nepali">
+	            <input type="file" name="file" class="form-control has-feedback-left" id="inputSuccess4" placeholder="Enter Your Title In Nepali" value="{{@$underneath->file}}">
 	                
 			</div>
 			

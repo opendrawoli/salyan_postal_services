@@ -1,6 +1,10 @@
 <?php
 return [
 	'file' =>[
-		'directory' => 'images/about',
+		'directory' => 'assets/images/service',
+		'thumbnail' => [
+			'width' => 268,
+			'height' => 108
+		]
 	],
 ];

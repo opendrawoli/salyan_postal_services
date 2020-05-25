@@ -33,5 +33,13 @@ Route::namespace('Backend')->prefix('admin')->as('admin.')->group( function(){
 	/* Policy Program Page */
 	Route::get('/policy_program','SinglePageController@getPolicyProgram')->name('getPolicyProgram');
 	Route::post('/policy_program','SinglePageController@postPolicyProgram')->name('postPolicyProgram');
+
+	/* Underneath Page */
+	Route::get('/underneath','SinglePageController@getUnderneath')->name('getUnderneath');
+	Route::post('/underneath','SinglePageController@postUnderneath')->name('postUnderneath');
+
+	/*    Service Route*/
+	Route::resource('/service','ServiceController');
 });
+
 
