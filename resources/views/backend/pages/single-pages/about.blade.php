@@ -5,7 +5,7 @@
   <div class="col-md-12 col-sm-12 ">
     <div class="x_panel">
       <div class="x_title">
-        <h2>Form Design <small>different form elements</small></h2>
+        <h2>हाम्रो बारेमा  <small>(नेपाली र English  मा फारम भर्नुहोस्।  English मा जरुरीचाई  छैन ) </small></h2>
         <ul class="nav navbar-right panel_toolbox">
           <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
           </li>
@@ -31,19 +31,19 @@
           @method('POST')
 		<div class="row">
 			<div class="col-md-6">
-	           	<label class="col-form-label " for="first-name">First Name <span class="required">*</span>
+	           	<label class="col-form-label " for="first-name">Title(Nepali)<span class="required">*</span>
 	            </label>
-	            <input type="text" name="title_nepali" class="form-control has-feedback-left" id="inputSuccess2" placeholder="Nepali Title" value="{{@$about->title_nepali}}">
-	           	<label class="col-form-label " for="first-name">First Name <span class="required">*</span>
+	            <input type="text" name="title_nepali" class="form-control has-feedback-left" id="inputSuccess2" placeholder="Enter Your Title In Nepali" value="{{@$about->title_nepali}}">
+	           	<label class="col-form-label " for="first-name">Description(Nepali) <span class="required">*</span>
 	            </label>
 	            <textarea name="description_nepali">{{@$about->description_nepali}}</textarea>		           
 			</div>
 			<div class="col-md-6">
-				<label class="col-form-label " for="first-name">First Name <span class="required">*</span>
+				<label class="col-form-label " for="first-name">Title(English) <span class="required">*</span>
 		         </label>
-		        <input type="text" name="title_english" class="form-control has-feedback-left" id="inputSuccess2" placeholder="English Title" value="{{@$about->title_english}}">
+		        <input type="text" name="title_english" class="form-control has-feedback-left" id="inputSuccess2" placeholder="Enter Your Title In English" value="{{@$about->title_english}}">
 		           
-	           	<label class="col-form-label " for="first-name">First Name <span class="required">*</span>
+	           	<label class="col-form-label " for="first-name">Description(English) <span class="required">*</span>
 	            </label>
 	            <textarea name="description_english">{{@$about->description_english}}</textarea>
 		          
