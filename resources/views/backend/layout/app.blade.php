@@ -35,7 +35,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title" style="font-color:12px;"><i class="fa fa-paw"></i> <span>जिल्ला हुलाक कार्यालय</span></a>
+              <a href="{{url('/')}}" class="site_title" style="font-color:12px;"><i class="fa fa-paw"></i> <span>जिल्ला हुलाक कार्यालय</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -211,7 +211,7 @@
  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
  <script>
         CKEDITOR.replace( 'description_nepali' );
-        CKEDITOR.replace( 'description_nepali' );
+        CKEDITOR.replace( 'description_english' );
          $('.nepaliDate').nepaliDatePicker({
           npdMonth: true,
           npdYear: true,
