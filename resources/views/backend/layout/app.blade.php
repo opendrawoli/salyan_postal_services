@@ -22,6 +22,7 @@
 
     <!-- Custom styling plus plugins -->
     <link href="{{asset('assets/build/css/custom.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/vendors/switchery/dist/switchery.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/nepali-date.css')}}" rel="stylesheet">
     <link href="{{asset('assets/editor.css')}}" rel="stylesheet">
@@ -34,7 +35,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>जिल्ला हुलाक कार्यालय सल्यान</span></a>
+              <a href="{{url('/')}}" class="site_title" style="font-color:12px;"><i class="fa fa-paw"></i> <span>जिल्ला हुलाक कार्यालय</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -203,6 +204,7 @@
  
 
     <script src="{{asset('assets/build/js/custom.min.js')}}"></script>
+    <script src="{{asset('assets/vendors/switchery/dist/switchery.min.js')}}"></script>
     <script src="{{asset('assets/editor.js')}}"></script>
     <script src="{{asset('assets/nepali-date.js')}}"></script>
  <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>

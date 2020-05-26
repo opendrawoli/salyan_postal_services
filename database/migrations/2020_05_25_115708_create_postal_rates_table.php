@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateActAndRegulationTable extends Migration
+class CreatePostalRatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class CreateActAndRegulationTable extends Migration
      */
     public function up()
     {
-        Schema::create('act_and_regulation', function (Blueprint $table) {
+        Schema::create('postal_rates', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('description')->nullable();
+            $table->string('file')->nullable();
+            $table->string('date')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ class CreateActAndRegulationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('act_and_regulation');
+        Schema::dropIfExists('postal_rates');
     }
 }

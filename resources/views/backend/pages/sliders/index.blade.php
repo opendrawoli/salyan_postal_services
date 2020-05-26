@@ -3,7 +3,7 @@
 <div class="col-md-12 col-sm-12 ">
       <div class="x_panel">
         <div class="x_title">
-          <h2>ऐन तथा नियमावली<small></small></h2>
+          <h2>Sliders<small>(तपाइले ५ ओटा slider मात्र सक्रिय गर्नसक्नुहुन्छ) </small></h2>
           <ul class="nav navbar-right panel_toolbox">
             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
             </li>
@@ -28,27 +28,28 @@
                 <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                   <thead>
                     <tr>
-                      <th>सि.न.</th>
-                      <th>शिर्षक  </th>
+                      <th>सि.न. </th>
+                      <th>शिर्षक </th>
                       <th>विवरण  </th>
-                      <th>अन्तिम पटक परिवर्तन मिति</th>
-                      <th>डाउनलोड </th>
+                      <th>फोटो   </th>
+                      <th>अवस्था </th>
                       <th>सम्पादन </th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php $count=0; ?>
-                    @foreach($act_and_regulations as $act_and_regulation):
+                    @foreach($sliders as $slider):
                     <tr>
                       <td><?= ++$count ?></td>
-                      <td>{{$act_and_regulation->title}}</td>
-                      <td>{{$act_and_regulation->description}}</td>
-                      <td>{{$act_and_regulation->date}}</td>
-                      <td><a href="{{asset($act_and_regulation->file)}}" download><i class="fa fa-download"></i> {{$act_and_regulation->title}}</a></td>
-                      <td><a href="{{route('admin.act_and_regulation.edit',$act_and_regulation->id) }}" class="btn btn-info btn-sm">Edit</a>
-                        <a href="javascript:void(0);" class="btn btn-danger btn-sm" onclick="deleteRow('postalRate{{$act_and_regulation->id }}')">Delete</a>
+                      <td>{{$slider->title}}</td>
+                      <td>{!! $slider->description !!}</td>
+                      <td><img src="{{asset($slider->image)}}" class="img-thumbnail" height="100"  alt=""></td>
+                      <td><a href="{{route('admin.activeInactiveSlider',$slider->id)}}"><?php if($slider->status==1) echo '<span class="btn btn-primary">Active</span>'; else echo '<span class="btn btn-secondary">Inactive</span>'; ?></a></td>
 
-                        <form id="postalRate{{$act_and_regulation->id}}" action="{{route('admin.act_and_regulation.destroy',$act_and_regulation->id)}}" method="post">
+                      <td><a href="{{route('admin.sliders.edit',$slider->id) }}" class="btn btn-info btn-sm">Edit</a>
+                        <a href="javascript:void(0);" class="btn btn-danger btn-sm" onclick="deleteRow('postalRate{{$slider->id }}')">Delete</a>
+
+                        <form id="postalRate{{$slider->id}}" action="{{route('admin.sliders.destroy',$slider->id)}}" method="post">
                           @csrf
                           @method('DELETE')
                         </form>
@@ -67,3 +68,5 @@
           </div>
         </div>
 @endsection
+
+

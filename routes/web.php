@@ -47,12 +47,18 @@ Route::namespace('Backend')->prefix('admin')->as('admin.')->group( function(){
 	Route::get('/citizen-charter','SinglePageController@getCitizenCharter')->name('getCitizenCharter');
 	Route::post('/citizen-charter','SinglePageController@postCitizenCharter')->name('postCitizenCharter');
 
-	/* Citizen Charter Page */
+	/* postal rates Page */
 	Route::resource('postal_rates','PostalRatesController');
 
 	/* about Page */
    	Route::get('/contact','ContactController@getContact')->name('getContact');
    	Route::post('/contact','ContactController@postContact')->name('postContact');
+	/* Act And Regulation Page */
+	Route::resource('act_and_regulation','ActAndRegulationController');
+	
+	/* all Sliders Page */
+	Route::resource('sliders','SliderController');
+	Route::get('/slider/{id}','SliderController@activeInactiveSlider')->name('activeInactiveSlider');
 
 
 

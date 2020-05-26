@@ -4,6 +4,12 @@
     <ul class="nav side-menu">
       <li><a><i class="fa fa-home"></i> गृहपृष्ठ <span class="fa fa-chevron"></span></a>
       </li>
+      <li><a><i class="fa fa-home"></i>  Slider <span class="fa fa-chevron-down"></span></a>              
+        <ul class="nav child_menu">
+          <li><a href="{{route('admin.sliders.create')}}">नयाँ  थप्नुहोस</a></li>
+          <li><a href="{{route('admin.sliders.index')}}">सबै Slider</a></li>
+        </ul>
+      </li>
       <li><a><i class="fa fa-binoculars"></i> हाम्रो बारेमा <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <li><a  href="{{route('admin.getAbout')}}">परिचय</a></li>
@@ -29,7 +35,12 @@
       </li>
        <li><a href="{{route('admin.getPolicyProgram')}}"><i class="fa fa-home"></i> नीति तथा कार्यक्रम <span class="fa fa-chevron"></span></a>
       </li>
-       <li><a><i class="fa fa-home"></i> ऐन तथा नियमावली <span class="fa fa-chevron"></span></a></li>
+        <li><a><i class="fa fa-home"></i>   ऐन तथा नियमावली <span class="fa fa-chevron-down"></span></a>              
+          <ul class="nav child_menu">
+            <li><a href="{{route('admin.act_and_regulation.create')}}">नयाँ  थप्नुहोस</a></li>
+            <li><a href="{{route('admin.act_and_regulation.index')}}">सबै ऐन तथा नियमावली </a></li>
+          </ul>
+        </li>
 
       <li><a><i class="fa fa-home"></i> मिडिया सेन्टर <span class="fa fa-chevron-down"></span></a>              
         <ul class="nav child_menu">
