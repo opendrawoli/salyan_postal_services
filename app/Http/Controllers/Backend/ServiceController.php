@@ -40,9 +40,9 @@ class ServiceController extends Controller
     {
 
         $request->validate([
-            'title_nepali'  => 'required',
-            'description_nepali'  => 'required',
-            'file'  => 'required',
+            'title_nepali'          => 'required',
+            'description_nepali'    => 'required',
+            'file'                 => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
         $path='';
          $service = new Service(); 
@@ -94,8 +94,9 @@ class ServiceController extends Controller
     public function update(Request $request, $id)
     { 
         $request->validate([
-            'title_nepali'  => 'required',
-            'description_nepali'  => 'required',
+            'title_nepali'          => 'required',
+            'description_nepali'    => 'required',
+            'file'                  => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
          $path='';
         $service = Service::find($id);

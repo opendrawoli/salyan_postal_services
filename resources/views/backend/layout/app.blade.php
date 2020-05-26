@@ -27,6 +27,7 @@
     <link href="{{asset('assets/nepali-date.css')}}" rel="stylesheet">
     <link href="{{asset('assets/editor.css')}}" rel="stylesheet">
     <link href="{{asset('assets/images/favicon-32x32.png')}}" rel="stylesheet">
+    <link href="{{asset('assets/vendors/custom.css')}}" rel="stylesheet">
   </head>
 
   <body class="nav-md">

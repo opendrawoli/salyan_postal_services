@@ -50,7 +50,7 @@ Route::namespace('Backend')->prefix('admin')->as('admin.')->group( function(){
 	/* postal rates Page */
 	Route::resource('postal_rates','PostalRatesController');
 
-	/* about Page */
+	/* contact Page */
    	Route::get('/contact','ContactController@getContact')->name('getContact');
    	Route::post('/contact','ContactController@postContact')->name('postContact');
 	/* Act And Regulation Page */
@@ -59,6 +59,9 @@ Route::namespace('Backend')->prefix('admin')->as('admin.')->group( function(){
 	/* all Sliders Page */
 	Route::resource('sliders','SliderController');
 	Route::get('/slider/{id}','SliderController@activeInactiveSlider')->name('activeInactiveSlider');
+
+	/* news  */
+	Route::resource('/news','NewsController');
 
 
 
