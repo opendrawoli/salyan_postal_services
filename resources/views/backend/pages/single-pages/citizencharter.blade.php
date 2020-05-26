@@ -25,7 +25,7 @@
 			@csrf
           @method('POST')
 		<div class="row">
-      @include('backend.pages.single-pages.message')
+      @include('backend.common.message')
 			<div class="col-md-6">
 	           	<label class="col-form-label " for="first-name">Title(Nepali)<span class="required">*</span>
 	            </label>

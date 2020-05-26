@@ -22,9 +22,9 @@
         <br />
 
         <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left
-        " action="@if(isset($service)) {{route('admin.service.update',$service->id)}} @else {{route('admin.service.store')}} @endif" method="POST" enctype="multipart/form-data">
+        " action="@if(@$service) {{route('admin.service.update',@$service->id)}} @else {{route('admin.service.store')}} @endif" method="POST" enctype="multipart/form-data">
      @csrf
-      @if(isset($service))
+      @if(@$service)
       @method('PUT')
       @endif
     <div class="row">
@@ -53,7 +53,7 @@
               <label class="col-form-label " for="first-name">File Upload (Pdf,Image,Doc)<span class="required"></span>
               </label>
               <input type="file" name="file" class="form-control" id="file" value="{{@$service->file}}" placeholder="Enter Your Title In Nepali"><br>
-                @if($service->file)
+                @if(@$service->file)
           <div class="col-md-9">
             <img src="{{ asset(@$service->file) }}" style="width: 150px;">
           </div>

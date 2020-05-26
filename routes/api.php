@@ -26,3 +26,5 @@ Route::get('citizen_charter','Frontend\FrontendController@getCitizenCharter');
 Route::get('postal_rates','Frontend\FrontendController@getPostalRates');
 Route::get('services','Frontend\FrontendController@getServices');
 Route::get('act_and_regulation','Frontend\FrontendController@getActAndRegulation');
+Route::get('staffs','Frontend\FrontendController@getStaff');
+Route::get('contact_us','Frontend\FrontendController@getContact');

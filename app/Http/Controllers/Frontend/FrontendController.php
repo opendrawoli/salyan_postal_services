@@ -9,6 +9,9 @@ use App\Model\PostalRate;
 use App\Model\Service;
 use App\Model\Slider;
 use App\Model\ActAndRegulation;
+use App\Model\StaffDetail;
+use App\Model\Contact;
+
 class FrontendController extends Controller
 {
     function getAbout(){
@@ -49,6 +52,18 @@ class FrontendController extends Controller
         $slider= Slider::where('status',1)->get();
         return response()->json($slider);
     }
+
+    function getStaff(){
+        $staff= StaffDetail::all();
+        return response()->json($staff);
+    }  
+
+    function getContact(){
+        $contact= Contact::where('meta_key','contact_us')->first();
+        return response()->json($contact);
+    }
+
+
 }
 
 

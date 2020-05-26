@@ -43,8 +43,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="{{asset('assets/images/apple-touch-icon.png')}}" alt="..." class="img-circle profile_img">
-              </div>
+                <img src="{{asset('assets/images/logo
               <div class="profile_info">
                 <span> कार्यालय</span>
                 <h2>सल्यान</h2>
