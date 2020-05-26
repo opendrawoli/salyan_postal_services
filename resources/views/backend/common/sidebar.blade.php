@@ -8,13 +8,20 @@
         <ul class="nav child_menu">
           <li><a  href="{{route('admin.getAbout')}}">परिचय</a></li>
           <li><a  href="{{route('admin.getUnderneath')}}">कार्यालय अन्तर्गतका निकायहरू</a></li>
-          <li><a  href="submenu3.html">कर्मचारी विवरण</a></li>
+
+          <li><a>कर्मचारी विवरण<span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+              <li><a href="{{route('admin.staff.create')}}">नयाँ थप्नुहोस</a></li>
+              <li><a href="{{route('admin.staff.index')}}">सबै सेवाहरु</a></li>
+            </ul>
+          </li>
+
+
           <li><a  href="{{route('admin.getCitizenCharter')}}">नागरिक बडापत्र</a></li>
         <li><a>सेवाहरु<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li><a href="{{route('admin.service.index')}}">सबै सेवाहरु</a>
-              <li><a href="{{route('admin.service.create')}}">नयाँ थप्नुहोस</a>
-              </li>
+              <li><a href="{{route('admin.service.create')}}">नयाँ थप्नुहोस</a></li>
+              <li><a href="{{route('admin.service.index')}}">सबै सेवाहरु</a></li>
             </ul>
           </li>
 
@@ -36,14 +43,18 @@
       </li>
      <li><a><i class="fa fa-home"></i> क्रियाकलापहरू <span class="fa fa-chevron"></span></a></li>
     
-      <li><a><i class="fa fa-home"></i>  हुलाक दर <span class="fa fa-chevron-down"></span></a>              
+      <li><a><i class="fa fa-envelope"></i>  हुलाक दर <span class="fa fa-chevron-down"></span></a>              
         <ul class="nav child_menu">
           <li><a href="{{route('admin.postal_rates.create')}}">नयाँ  थप्नुहोस</a></li>
           <li><a href="{{route('admin.postal_rates.index')}}">सबै हुलाक दर </a></li>
         </ul>
       </li>
 
-     <li><a><i class="fa fa-home"></i> सम्पर्क गर्नुहोस <span class="fa fa-chevron"></span></a></li>
+     <li>
+      <a href="{{route('admin.getContact')}}"><i class="fa fa-phone"></i> सम्पर्क गर्नुहोस <span class="fa fa-chevron"></span></a>
+    </li>
+
+
      <li><a><i class="fa fa-home"></i> Settings<span class="fa fa-chevron"></span></a></li>
     
     </ul>

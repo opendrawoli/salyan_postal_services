@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Model\StaffDetail;
+use App\Model\Designation;
+use File;
 class StaffDetailController extends Controller
 {
     /**
@@ -14,7 +16,9 @@ class StaffDetailController extends Controller
      */
     public function index()
     {
-        //
+        $designations = Designation::all();
+        $staffs = StaffDetail::all();
+        return view('backend.pages.staff_detail.index',compact('staffs','designations'));
     }
 
     /**
@@ -24,7 +28,8 @@ class StaffDetailController extends Controller
      */
     public function create()
     {
-        //
+          $designations = Designation::all();
+        return view('backend.pages.staff_detail.form',compact('designations'));
     }
 
     /**
@@ -35,7 +40,29 @@ class StaffDetailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+         $request->validate([
+            'name'         => 'required',
+            'designation'  => 'required',
+            'phone'        => 'required',
+            'email'        => 'email',
+            'file'         => 'required',
+        ]);
+        $path='';
+         $staff = new StaffDetail(); 
+        if($request->hasFile('file')){
+           $extension = ".".$request->file->getClientOriginalExtension();
+           $name      = basename($request->file->getClientOriginalName(), $extension).time();
+           $name      = $name.$extension;
+           $path      = $request->file->move('assets/staff', $name);
+         }
+        $staff->file        = $path;
+        $staff->name        = $request->name;
+        $staff->designation = $request->designation;
+        $staff->phone       = $request->phone;
+        $staff->email       = $request->email;
+        $staff->save();
+        return back()->with('message','succssfully added');
     }
 
     /**
@@ -57,7 +84,9 @@ class StaffDetailController extends Controller
      */
     public function edit($id)
     {
-        //
+        $staff = StaffDetail::find($id);
+          $designations = Designation::all();
+       return view('backend.pages.staff_detail.form',compact('staff','designations'));
     }
 
     /**
@@ -69,7 +98,28 @@ class StaffDetailController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name'         => 'required',
+            'designation'  => 'required',
+            'phone'        => 'required|numeric',
+            'email'        => 'email',
+        ]);
+        $path='';
+         $staff = StaffDetail::find($id); 
+        if($request->hasFile('file')){
+            File::delete($staff->file);
+           $extension = ".".$request->file->getClientOriginalExtension();
+           $name      = basename($request->file->getClientOriginalName(), $extension).time();
+           $name      = $name.$extension;
+           $path      = $request->file->move('assets/staff', $name);
+         }
+        $staff->file = $request->hasFile('file')?$path:$staff->file;
+        $staff->name        = $request->name;
+        $staff->designation = $request->designation;
+        $staff->phone       = $request->phone;
+        $staff->email       = $request->email;
+        $staff->save();
+        return back()->with('message','succssfully updated');
     }
 
     /**
@@ -80,6 +130,19 @@ class StaffDetailController extends Controller
      */
     public function destroy($id)
     {
-        //
+         $staff = StaffDetail::find($id);
+        File::delete($staff->file);
+        $staff->destroy($id);
+        return back()->with('message','successfully deleted');
+    }
+    public function designationAdd(Request $request){
+        $request->validate([
+            'designation'  => 'required|unique:designations',
+        ]);
+         $staff = new Designation(); 
+         $staff->designation = $request->designation;
+         $staff->save();
+         return back()->with('message','successfully added');
+
     }
 }

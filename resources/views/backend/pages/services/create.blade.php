@@ -28,11 +28,11 @@
       @method('PUT')
       @endif
     <div class="row">
-      @include('backend.pages.single-pages.message')
+      @include('backend.common.message')
       <div class="col-md-6">
               <label class="col-form-label " for="first-name">Title(नेपालीमा)<span class="required">*</span>
               </label>
-              <input type="text" name="title_nepali" class="form-control has-feedback-left" id="nepali_title" placeholder="Enter Your Title In Nepali" value="{{@$service->title_nepali}}">
+              <input type="text" name="title_nepali" class="form-control" id="nepali_title" placeholder="Enter Your Title In Nepali" value="{{@$service->title_nepali}}">
               <label class="col-form-label " for="first-name">Description(नेपालीमा) <span class="required">*</span>
               </label>
               <textarea name="description_nepali">{{@$service->description_nepali}}</textarea>              
@@ -40,7 +40,7 @@
       <div class="col-md-6">
         <label class="col-form-label " for="first-name" >Title(English) <span class="required"></span>
              </label>
-            <input type="text" name="title_english" class="form-control has-feedback-left" id="english_title" value="{{@$service->title_english}}" placeholder="Enter Your Title In English">
+            <input type="text" name="title_english" class="form-control" id="english_title" value="{{@$service->title_english}}" placeholder="Enter Your Title In English">
                
               <label class="col-form-label " for="first-name">Description(English)<span class="required">*</span>
               </label>
@@ -52,7 +52,12 @@
       <div class="col-md-6">
               <label class="col-form-label " for="first-name">File Upload (Pdf,Image,Doc)<span class="required"></span>
               </label>
-              <input type="file" name="file" class="form-control has-feedback-left" id="file" value="{{@$service->file}}" placeholder="Enter Your Title In Nepali">
+              <input type="file" name="file" class="form-control" id="file" value="{{@$service->file}}" placeholder="Enter Your Title In Nepali"><br>
+                @if($service->file)
+          <div class="col-md-9">
+            <img src="{{ asset(@$service->file) }}" style="width: 150px;">
+          </div>
+          @endif
                   
       </div>
       
@@ -61,8 +66,8 @@
           <div class="ln_solid"></div>
           <div class="item form-group">
             <div class="col-md-6 col-sm-6 offset-md-5">
-              <button class="btn btn-primary" type="button">Cancel</button>
-        <button class="btn btn-primary" type="reset">Reset</button>
+              <a href="{{route('admin.service.index')}}" class="btn btn-secondary" type="button">Cancel</a>
+              <button class="btn btn-danger" type="reset">Reset</button>
               <button type="submit" class="btn btn-success">Submit</button>
             </div>
           </div>
@@ -73,3 +78,13 @@
   </div>
 </div>
 @endsection
+
+@section('scripts')
+<script>
+ $('#successmsg').fadeOut(1200);
+       $('#errmsg').fadeOut(1200);
+    </script>
+
+@endsection
+
+

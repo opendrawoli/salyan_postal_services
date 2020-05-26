@@ -69,3 +69,11 @@
   </div>
 </div>
 @endsection
+
+@section('scripts')
+<script>
+ $('#successmsg').fadeOut(1200);
+       $('#errmsg').fadeOut(1200);
+    </script>
+
+@endsection

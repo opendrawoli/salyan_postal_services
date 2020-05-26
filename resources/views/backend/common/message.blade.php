@@ -16,9 +16,4 @@
        @endif
       </div>
 
-    @section('scripts')
-    <script type="text/javascript">
-      $('#successmsg').fadeOut(1500);
-      $('#errmsg').fadeOut(1500);
-    </script>
-@endsection
+   

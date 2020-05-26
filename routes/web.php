@@ -40,12 +40,19 @@ Route::namespace('Backend')->prefix('admin')->as('admin.')->group( function(){
 
 	/*    Service Route*/
 	Route::resource('/service','ServiceController');
+	/*    Service Route*/
+	Route::resource('/staff','StaffDetailController');
+	Route::post('/designationAdd','StaffDetailController@designationAdd')->name('designationAdd');
 	/* Citizen Charter Page */
 	Route::get('/citizen-charter','SinglePageController@getCitizenCharter')->name('getCitizenCharter');
 	Route::post('/citizen-charter','SinglePageController@postCitizenCharter')->name('postCitizenCharter');
 
 	/* Citizen Charter Page */
 	Route::resource('postal_rates','PostalRatesController');
+
+	/* about Page */
+   	Route::get('/contact','ContactController@getContact')->name('getContact');
+   	Route::post('/contact','ContactController@postContact')->name('postContact');
 
 
 

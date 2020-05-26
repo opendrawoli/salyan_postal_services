@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\PostalRate;
+use Illuminate\Support\Facades\File;
 
 class PostalRatesController extends Controller
 {
@@ -121,6 +122,8 @@ class PostalRatesController extends Controller
      */
     public function destroy($id)
     {
+         $postal_rates = PostalRate::find($id);
+         File::delete($postal_rates->file);         
         PostalRate::destroy($id);
         return back()->with('message','successfully deleted');
     }

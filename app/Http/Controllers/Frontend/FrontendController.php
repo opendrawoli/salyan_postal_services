@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\SinglePage;
+use App\Model\PostalRate;
 class FrontendController extends Controller
 {
     function getAbout(){
@@ -19,5 +20,8 @@ class FrontendController extends Controller
     } 
     function getCitizenCharter(){
     	return SinglePage::where('meta_key','citizen_charter')->first();
+    }
+    function getPostalRates(){
+    	return PostalRate::all();
     }
 }

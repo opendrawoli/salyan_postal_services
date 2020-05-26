@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Model\Service;
-use File;
-class ServiceController extends Controller
+use App\Model\ActAndRegulation;
+use Illuminate\Support\Facades\File;
+
+class ActAndRegulationController extends Controller
 {
-  
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +16,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-       $services = Service::all();
-       return view('backend.pages.services.index',compact('services'));
+        $act_and_regulation=PostalRate::all();
+        return view('backend.pages.act_and_regulation.index',compact('act_and_regulation'));
     }
 
     /**
@@ -27,7 +27,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('backend.pages.services.create');
+        return view('backend.pages.act_and_regulation.create');
     }
 
     /**
@@ -38,27 +38,25 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
-            'title_nepali'  => 'required',
-            'description_nepali'  => 'required',
-            'file'  => 'required',
+            'title'  => 'required',
+            'file'   =>'required'
         ]);
-        $path='';
-         $service = new Service(); 
         if($request->hasFile('file')){
+          
            $extension = ".".$request->file->getClientOriginalExtension();
            $name = basename($request->file->getClientOriginalName(), $extension).time();
            $name = $name.$extension;
-           $path = $request->file->move('assets/service', $name);
+           $path = $request->file->move('assets/act_and_regulation', $name);
          }
-        $service->file = $path;
-        $service->title_nepali = $request->title_nepali;
-        $service->title_english = $request->title_english;
-        $service->description_nepali = $request->description_nepali;
-        $service->description_english = $request->description_english;
-        $service->save();
-        return back()->with('message','succssfully added');
+
+        $act_and_regulation = new PostalRate();
+        $act_and_regulation->title       = $request->title;
+        $act_and_regulation->description      = $request->description;
+        $act_and_regulation->file     = $path;
+        $act_and_regulation->date = $request->date;
+        $act_and_regulation->save();
+        return back()->with('message','Added');
     }
 
     /**
@@ -80,8 +78,8 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        $service = Service::find($id);
-       return view('backend.pages.services.create',compact('service'));
+        $act_and_regulation=PostalRate::find($id);
+        return view('backend.pages.act_and_regulation.create',compact('act_and_regulation'));
     }
 
     /**
@@ -92,28 +90,28 @@ class ServiceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    { 
+    {
         $request->validate([
-            'title_nepali'  => 'required',
-            'description_nepali'  => 'required',
+            'title'  => 'required',
         ]);
-         $path='';
-        $service = Service::find($id);
 
-         if($request->hasFile('file')){
-            File::delete($service->file);
+        $act_and_regulation = PostalRate::find($id);
+
+        if($request->hasFile('file')){
+          File::delete($policy_program->file);
            $extension = ".".$request->file->getClientOriginalExtension();
            $name = basename($request->file->getClientOriginalName(), $extension).time();
            $name = $name.$extension;
-           $path = $request->file->move('assets/service', $name);
+           $path = $request->file->move('assets/act_and_regulation', $name);
          }
-          $service->file = $request->hasFile('file')?$path:$service->file;
-         $service->title_nepali = $request->title_nepali;
-        $service->title_english = $request->title_english;
-        $service->description_nepali = $request->description_nepali;
-        $service->description_english = $request->description_english;
-        $service->save();
-        return back()->with('message','succssfully updated');
+
+        
+        $act_and_regulation->title       = $request->title;
+        $act_and_regulation->description = $request->description;
+        $act_and_regulation->file         = $request->hasFile('file')?$path : $act_and_regulation->file;
+        $act_and_regulation->date         = $request->date;
+        $act_and_regulation->save();
+        return back()->with('message','Updated');
     }
 
     /**
@@ -124,11 +122,9 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        $service = Service::find($id);
-        File::delete($service->file);
-        $service->destroy($id);
+         $act_and_regulation = PostalRate::find($id);
+         File::delete($act_and_regulation->file);         
+        PostalRate::destroy($id);
         return back()->with('message','successfully deleted');
     }
-    
-       
 }
