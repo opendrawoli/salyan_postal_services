@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Model\MediaCenter\Right;
+use App\Model\Activity;
 use File;
-class RightToInformationController extends Controller
+class ActivitiesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class RightToInformationController extends Controller
      */
     public function index()
     {
-        $rights = Right::all();
-        return view('backend.pages.right_to_information.index',compact('rights'));
+        $activities = Activity::all();
+        return view('backend.pages.activities.index',compact('activities'));
     }
 
     /**
@@ -26,7 +26,7 @@ class RightToInformationController extends Controller
      */
     public function create()
     {
-        return view('backend.pages.right_to_information.form');
+        return view('backend.pages.activities.form');
     }
 
     /**
@@ -40,23 +40,19 @@ class RightToInformationController extends Controller
         $request->validate([
             'title'         => 'required',
             'file'          =>'required',
-            'first_date'    => 'required',
-            'last_date'    => 'required'
         ]);
         if($request->hasFile('file')){
           
            $extension = ".".$request->file->getClientOriginalExtension();
            $name = basename($request->file->getClientOriginalName(), $extension).time();
            $name = $name.$extension;
-           $path = $request->file->move('assets/right_to_information', $name);
+           $path = $request->file->move('assets/activities', $name);
          }
 
-        $right = new Right();
-        $right->title           = $request->title;
-        $right->file            = $path;
-        $right->first_date      = $request->first_date;
-        $right->last_date      = $request->last_date;
-        $right->save();
+        $activity = new Activity();
+        $activity->title           = $request->title;
+        $activity->file            = $path;
+        $activity->save();
         return back()->with('message','Added Successfully');
     }
 
@@ -79,8 +75,8 @@ class RightToInformationController extends Controller
      */
     public function edit($id)
     {
-        $right=Right::find($id);
-        return view('backend.pages.right_to_information.form',compact('right'));
+        $activity=Activity::find($id);
+        return view('backend.pages.activities.form',compact('activity'));
     }
 
     /**
@@ -94,26 +90,22 @@ class RightToInformationController extends Controller
     {
         $request->validate([
             'title'       => 'required',
-            'first_date'  => 'required',
-            'last_date'  => 'required',
         ]);
 
-        $right = Right::find($id);
+        $activity = activity::find($id);
 
         if($request->hasFile('file')){
-          File::delete($right->file);
+          File::delete($activity->file);
            $extension = ".".$request->file->getClientOriginalExtension();
            $name = basename($request->file->getClientOriginalName(), $extension).time();
            $name = $name.$extension;
-           $path = $request->file->move('assets/right_to_information', $name);
+           $path = $request->file->move('assets/activities', $name);
          }
 
         
-        $right->title              = $request->title;
-        $right->file               = $request->hasFile('file')?$path : $right->file;
-        $right->first_date         = $request->first_date;
-        $right->last_date         = $request->last_date;
-        $right->save();
+        $activity->title              = $request->title;
+        $activity->file               = $request->hasFile('file')?$path : $activity->file;
+        $activity->save();
         return back()->with('message','Updated Successfully');
     }
 
@@ -125,9 +117,9 @@ class RightToInformationController extends Controller
      */
     public function destroy($id)
     {
-          $right = Right::find($id);
-         File::delete($right->file);         
-        Right::destroy($id);
+          $activity = Activity::find($id);
+         File::delete($activity->file);         
+            Activity::destroy($id);
         return back()->with('message','successfully deleted');
     }
 }
