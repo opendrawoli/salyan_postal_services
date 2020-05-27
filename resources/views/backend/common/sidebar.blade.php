@@ -44,18 +44,19 @@
 
       <li><a><i class="fa fa-home"></i> मिडिया सेन्टर <span class="fa fa-chevron-down"></span></a>              
         <ul class="nav child_menu">
-          <li><a href="form.html">सूचना</a></li>
-          <li><a href="form_advanced.html">सूचनाको हक</a></li>
-          <li><a href="form_validation.html">प्रेश विज्ञप्ति</a></li>
-
-          <li><a>समाचार<span class="fa fa-chevron-down"></span></a>
+          <li><a>सूचनाको हक<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li><a href="{{route('admin.news.create')}}">नयाँ थप्नुहोस</a></li>
-              <li><a href="{{route('admin.news.index')}}">सबै समाचार</a></li>
+              <li><a href="{{route('admin.right.create')}}">नयाँ थप्नुहोस</a></li>
+              <li><a href="{{route('admin.right.index')}}">सबै सूचनाका हकहरु</a></li>
             </ul>
           </li>
-          <li><a href="form_upload.html">बोलपत्र</a></li>
-          <li><a href="form_buttons.html">परिपत्र</a></li>
+
+          <li><a>सुचनाहरु<span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+              <li><a href="{{route('admin.news.create')}}">नयाँ थप्नुहोस</a></li>
+              <li><a href="{{route('admin.news.index')}}">सबै सुचनाहरु</a></li>
+            </ul>
+          </li>
         </ul>
       </li>
      <li><a><i class="fa fa-home"></i> क्रियाकलापहरू <span class="fa fa-chevron"></span></a></li>

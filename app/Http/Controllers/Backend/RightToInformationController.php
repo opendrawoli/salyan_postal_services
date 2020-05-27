@@ -4,10 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Model\PostalRate;
-use Illuminate\Support\Facades\File;
-
-class PostalRatesController extends Controller
+use App\Model\MediaCenter\Right;
+class RightToInformationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,8 @@ class PostalRatesController extends Controller
      */
     public function index()
     {
-        $postal_rates=PostalRate::all();
-        return view('backend.pages.postal_rates.index',compact('postal_rates'));
+        $rights = Right::all();
+        return view('backend.pages.right_to_information.index',compact('rights'));
     }
 
     /**
@@ -27,7 +25,7 @@ class PostalRatesController extends Controller
      */
     public function create()
     {
-        return view('backend.pages.postal_rates.create');
+        return view('backend.pages.right_to_information.form');
     }
 
     /**
@@ -39,24 +37,26 @@ class PostalRatesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'  => 'required',
-            'file'   =>'required'
+            'title'         => 'required',
+            'file'          =>'required',
+            'first_date'    => 'required',
+            'last_date'    => 'required'
         ]);
         if($request->hasFile('file')){
           
            $extension = ".".$request->file->getClientOriginalExtension();
            $name = basename($request->file->getClientOriginalName(), $extension).time();
            $name = $name.$extension;
-           $path = $request->file->move('assets/postal_rates', $name);
+           $path = $request->file->move('assets/right_to_information', $name);
          }
 
-        $postal_rates = new PostalRate();
-        $postal_rates->title       = $request->title;
-        $postal_rates->description      = $request->description;
-        $postal_rates->file     = $path;
-        $postal_rates->date = $request->date;
-        $postal_rates->save();
-        return back()->with('message','Added');
+        $right = new Right();
+        $right->title           = $request->title;
+        $right->file            = $path;
+        $right->first_date      = $request->first_date;
+        $right->last_date      = $request->last_date;
+        $right->save();
+        return back()->with('message','Added Successfully');
     }
 
     /**
@@ -78,8 +78,8 @@ class PostalRatesController extends Controller
      */
     public function edit($id)
     {
-        $postal_rates=PostalRate::find($id);
-        return view('backend.pages.postal_rates.create',compact('postal_rates'));
+        $right=Right::find($id);
+        return view('backend.pages.right_to_information.form',compact('right'));
     }
 
     /**
@@ -92,26 +92,28 @@ class PostalRatesController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'title'  => 'required',
+            'title'       => 'required',
+            'first_date'  => 'required',
+            'last_date'  => 'required',
         ]);
 
-        $postal_rates = PostalRate::find($id);
+        $right = Right::find($id);
 
         if($request->hasFile('file')){
-          File::delete($postal_rates->file);
+          File::delete($right->file);
            $extension = ".".$request->file->getClientOriginalExtension();
            $name = basename($request->file->getClientOriginalName(), $extension).time();
            $name = $name.$extension;
-           $path = $request->file->move('assets/postal_rates', $name);
+           $path = $request->file->move('assets/right_to_information', $name);
          }
 
         
-        $postal_rates->title       = $request->title;
-        $postal_rates->description = $request->description;
-        $postal_rates->file         = $request->hasFile('file')?$path : $postal_rates->file;
-        $postal_rates->date         = $request->date;
-        $postal_rates->save();
-        return back()->with('message','Updated');
+        $right->title              = $request->title;
+        $right->file               = $request->hasFile('file')?$path : $right->file;
+        $right->first_date         = $request->first_date;
+        $right->last_date         = $request->last_date;
+        $right->save();
+        return back()->with('message','Updated Successfully');
     }
 
     /**
@@ -122,9 +124,9 @@ class PostalRatesController extends Controller
      */
     public function destroy($id)
     {
-         $postal_rates = PostalRate::find($id);
-         File::delete($postal_rates->file);         
-        PostalRate::destroy($id);
+          $right = Right::find($id);
+         File::delete($right->file);         
+        Right::destroy($id);
         return back()->with('message','successfully deleted');
     }
 }
