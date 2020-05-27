@@ -23,9 +23,9 @@
 
         <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{ (@$activity)? route('admin.activity.update',$activity->id) : route('admin.activity.store')}}" method="POST" enctype="multipart/form-data">
 			@csrf
-      @if(@$activity):
+      @if(@$activity)
           @method('PUT')
-      @else:
+      @else
           @method('POST')
       @endif
 
