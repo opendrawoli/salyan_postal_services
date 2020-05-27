@@ -50,7 +50,7 @@
     </div>
     <div class="row">
       <div class="col-md-6">
-              <label class="col-form-label " for="first-name">File Upload (Pdf,Image,Doc)<span class="required"></span>
+              <label class="col-form-label " for="first-name">Image Upload<span class="required"></span>
               </label>
               <input type="file" name="file" class="form-control" id="file" value="{{@$service->file}}" placeholder="Enter Your Title In Nepali"><br>
                 @if(@$service->file)

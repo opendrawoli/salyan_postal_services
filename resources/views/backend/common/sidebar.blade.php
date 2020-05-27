@@ -18,7 +18,7 @@
           <li><a>कर्मचारी विवरण<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li><a href="{{route('admin.staff.create')}}">नयाँ थप्नुहोस</a></li>
-              <li><a href="{{route('admin.staff.index')}}">सबै सेवाहरु</a></li>
+              <li><a href="{{route('admin.staff.index')}}">सबै कर्मचारीहरु</a></li>
             </ul>
           </li>
 
@@ -47,7 +47,13 @@
           <li><a href="form.html">सूचना</a></li>
           <li><a href="form_advanced.html">सूचनाको हक</a></li>
           <li><a href="form_validation.html">प्रेश विज्ञप्ति</a></li>
-          <li><a href="form_wizards.html">समाचार</a></li>
+
+          <li><a>समाचार<span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+              <li><a href="{{route('admin.news.create')}}">नयाँ थप्नुहोस</a></li>
+              <li><a href="{{route('admin.news.index')}}">सबै समाचार</a></li>
+            </ul>
+          </li>
           <li><a href="form_upload.html">बोलपत्र</a></li>
           <li><a href="form_buttons.html">परिपत्र</a></li>
         </ul>
