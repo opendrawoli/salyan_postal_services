@@ -44,7 +44,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="{{asset('assets/images/apple-touch-icon.png')}}" alt="..." class="img-circle profile_img">
+                <img src="{{asset('assets/images/logo.png')}}" class="img-circle profile_img"/>
               </div>
               <div class="profile_info">
                 <span> कार्यालय</span>

@@ -22,9 +22,9 @@
         <br />
 
         <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left
-        " action="@if(isset($service)) {{route('admin.service.update',$service->id)}} @else {{route('admin.service.store')}} @endif" method="POST" enctype="multipart/form-data">
+        " action="@if(@$service) {{route('admin.service.update',@$service->id)}} @else {{route('admin.service.store')}} @endif" method="POST" enctype="multipart/form-data">
      @csrf
-      @if(isset($service))
+      @if(@$service)
       @method('PUT')
       @endif
     <div class="row">

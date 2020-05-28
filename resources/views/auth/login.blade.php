@@ -1,73 +1,59 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+  <title>जिल्ला हुलाक कार्यालय सल्यान</title>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
-                </div>
+  <link rel="shortcut icon" href="{{asset('assets/images/favicon-32x32.png')}}">
+  <!-- Stylesheets -->
+   <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{asset('assets/css/bootstrap-extend.min.css')}}">
+  <link rel="stylesheet" href="{{asset('assets/css/login.min.css')}}">
+  <link rel="stylesheet" href="{{asset('assets/fonts/material-design/material-design.min.css')}}">
+  <link rel="stylesheet" href="{{asset('assets/fonts/brand-icons/brand-icons.min.css')}}">
+<body class="page-login-v3 layout-full">
+<div class="page animsition vertical-align text-center" data-animsition-in="fade-in"
+  data-animsition-out="fade-out">>
+    <div class="page-content vertical-align-middle">
+      <div class="panel">
+        <div class="panel-body">
+          <div class="brand">
+            <img class="brand-img" src="{{asset('assets/images/logo.png')}}" alt="" width="150px">
+            <p class="font-size-18">नेपाल सरकार</p>
+            <p class="font-size-18">जिल्ला हुलाक कार्यालय सल्यान</p>
+            <h3 class="brand-text"></h3>
+          </div>
+              <form id='form-login' role="form" method="POST" action="">
+        <div class="form-group form-material floating">
+              <input id="email" type="email" class="form-control" name="email" value="" required autofocus>
+              <label class="floating-label">Email Address</label>
+                      </div>
+        
+        <div class="form-group form-material floating">
+            <input id="password" type="password" class="form-control" name="password" required>
+            <label class="floating-label">Password</label>
+                    </div>
+                <div class="form-group clearfix">
+            <div class="checkbox-custom checkbox-inline checkbox-primary checkbox-lg pull-left">
+                <input id="remember" type="checkbox" name="remember" >
+                <label for="inputCheckbox">Remember me</label>
             </div>
         </div>
-    </div>
-</div>
-@endsection
+        
+        <button id="btn-login" type="submit" class="btn btn-primary btn-block btn-lg margin-top-40">Sign in</button>
+       
+    </form>
+        
+        </div>
+      </div>
+  <!-- Footer -->
+  <footer class="page-copyright page-copyright-inverse">
+        <p>जिल्ला हुलाक कार्यालय सल्यान</p>
+        <p>© 2020. All RIGHT RESERVED.</p>     
+  </footer>
+</body>
+</html>
