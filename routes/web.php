@@ -66,6 +66,8 @@ Route::namespace('Backend')->prefix('admin')->as('admin.')->group( function(){
 	Route::resource('/right','RightToInformationController');
 		/* Activities  */
 	Route::resource('/activity','ActivitiesController');
+	/* user  */
+	Route::resource('/user','UsersController');
 
 
 

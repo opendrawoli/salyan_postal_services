@@ -77,8 +77,14 @@
       <a href="{{route('admin.getContact')}}"><i class="fa fa-phone"></i> सम्पर्क गर्नुहोस <span class="fa fa-chevron"></span></a>
     </li>
 
-
-     <li><a><i class="fa fa-cog"></i> Settings<span class="fa fa-chevron"></span></a></li>
+    <li><a><i class="fa fa-envelope"></i>Users<span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+          <li><a href="{{route('admin.user.create')}}">Add New</a></li>
+          <li><a href="{{route('admin.user.index')}}">All Users</a></li>
+        </ul>
+      </li>
+      
+        <li><a><i class="fa fa-cog"></i> Settings<span class="fa fa-chevron"></span></a></li>
     
     </ul>
   </div>
