@@ -4,7 +4,7 @@
     <ul class="nav side-menu">
       <li><a><i class="fa fa-home"></i> गृहपृष्ठ <span class="fa fa-chevron"></span></a>
       </li>
-      <li><a><i class="fa fa-home"></i>  Slider <span class="fa fa-chevron-down"></span></a>              
+      <li><a><i class="fa fa-image"></i>  Slider <span class="fa fa-chevron-down"></span></a>              
         <ul class="nav child_menu">
           <li><a href="{{route('admin.sliders.create')}}">नयाँ  थप्नुहोस</a></li>
           <li><a href="{{route('admin.sliders.index')}}">सबै Slider</a></li>
@@ -33,32 +33,38 @@
 
         </ul>
       </li>
-       <li><a href="{{route('admin.getPolicyProgram')}}"><i class="fa fa-home"></i> नीति तथा कार्यक्रम <span class="fa fa-chevron"></span></a>
+       <li><a href="{{route('admin.getPolicyProgram')}}"><i class="fa fa-database"></i> नीति तथा कार्यक्रम <span class="fa fa-chevron"></span></a>
       </li>
-        <li><a><i class="fa fa-home"></i>   ऐन तथा नियमावली <span class="fa fa-chevron-down"></span></a>              
+        <li><a><i class="fa fa-thumbs-o-up"></i>   ऐन तथा नियमावली <span class="fa fa-chevron-down"></span></a>              
           <ul class="nav child_menu">
             <li><a href="{{route('admin.act_and_regulation.create')}}">नयाँ  थप्नुहोस</a></li>
             <li><a href="{{route('admin.act_and_regulation.index')}}">सबै ऐन तथा नियमावली </a></li>
           </ul>
         </li>
 
-      <li><a><i class="fa fa-home"></i> मिडिया सेन्टर <span class="fa fa-chevron-down"></span></a>              
+      <li><a><i class="fa fa-caret-square-o-right"></i> मिडिया सेन्टर <span class="fa fa-chevron-down"></span></a>              
         <ul class="nav child_menu">
-          <li><a href="form.html">सूचना</a></li>
-          <li><a href="form_advanced.html">सूचनाको हक</a></li>
-          <li><a href="form_validation.html">प्रेश विज्ञप्ति</a></li>
-
-          <li><a>समाचार<span class="fa fa-chevron-down"></span></a>
+          <li><a>सूचनाको हक<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li><a href="{{route('admin.news.create')}}">नयाँ थप्नुहोस</a></li>
-              <li><a href="{{route('admin.news.index')}}">सबै समाचार</a></li>
+              <li><a href="{{route('admin.right.create')}}">नयाँ थप्नुहोस</a></li>
+              <li><a href="{{route('admin.right.index')}}">सबै सूचनाका हकहरु</a></li>
             </ul>
           </li>
-          <li><a href="form_upload.html">बोलपत्र</a></li>
-          <li><a href="form_buttons.html">परिपत्र</a></li>
+
+          <li><a>सुचनाहरु<span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+              <li><a href="{{route('admin.news.create')}}">नयाँ थप्नुहोस</a></li>
+              <li><a href="{{route('admin.news.index')}}">सबै सुचनाहरु</a></li>
+            </ul>
+          </li>
         </ul>
       </li>
-     <li><a><i class="fa fa-home"></i> क्रियाकलापहरू <span class="fa fa-chevron"></span></a></li>
+     <li><a><i class="fa fa-bar-chart"></i>   क्रियाकलापहरू  <span class="fa fa-chevron-down"></span></a>              
+        <ul class="nav child_menu">
+          <li><a href="{{route('admin.activity.create')}}">नयाँ  थप्नुहोस</a></li>
+          <li><a href="{{route('admin.activity.index')}}">सबै  क्रियाकलापहरू  </a></li>
+        </ul>
+      </li>
     
       <li><a><i class="fa fa-envelope"></i>  हुलाक दर <span class="fa fa-chevron-down"></span></a>              
         <ul class="nav child_menu">
@@ -72,7 +78,7 @@
     </li>
 
 
-     <li><a><i class="fa fa-home"></i> Settings<span class="fa fa-chevron"></span></a></li>
+     <li><a><i class="fa fa-cog"></i> Settings<span class="fa fa-chevron"></span></a></li>
     
     </ul>
   </div>

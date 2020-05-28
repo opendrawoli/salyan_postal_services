@@ -62,6 +62,11 @@ Route::namespace('Backend')->prefix('admin')->as('admin.')->group( function(){
 
 	/* news  */
 	Route::resource('/news','NewsController');
+	/* right to information  */
+	Route::resource('/right','RightToInformationController');
+		/* Activities  */
+	Route::resource('/activity','ActivitiesController');
+
 
 
 

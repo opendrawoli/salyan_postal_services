@@ -23,13 +23,14 @@
 
         <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{ (@$sliders)? route('admin.sliders.update',$sliders->id) : route('admin.sliders.store')}}" method="POST" enctype="multipart/form-data">
 			@csrf
-      @if(@$sliders):
+      @if(@$sliders)
           @method('PUT')
-      @else:
+      @else
           @method('POST')
       @endif
 
 		<div class="row">
+      @include('backend.common.message')
 			<div class="col-md-6">
 	           	<label class="col-form-label " for="first-name">Title<span class="required">*</span>
 	            </label>
@@ -53,7 +54,7 @@
           <div class="ln_solid"></div>
           <div class="item form-group">
             <div class="col-md-6 col-sm-6 offset-md-5">
-              <button class="btn btn-primary" type="button">Cancel</button>
+              <a href="{{ route('admin.sliders.index')}}" class="btn btn-secondary" type="button">Cancel</a>
 			  <button class="btn btn-primary" type="reset">Reset</button>
               <button type="submit" class="btn btn-success">Submit</button>
             </div>
@@ -64,4 +65,10 @@
     </div>
   </div>
 </div>
+@endsection
+@section('scripts')
+<script>
+ $('#successmsg').fadeOut(1200);
+ $('#errmsg').fadeOut(1200);
+</script>
 @endsection

@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Model\PostalRate;
-use Illuminate\Support\Facades\File;
-
-class PostalRatesController extends Controller
+use App\Model\Activity;
+use File;
+class ActivitiesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,8 @@ class PostalRatesController extends Controller
      */
     public function index()
     {
-        $postal_rates=PostalRate::all();
-        return view('backend.pages.postal_rates.index',compact('postal_rates'));
+        $activities = Activity::all();
+        return view('backend.pages.activities.index',compact('activities'));
     }
 
     /**
@@ -27,7 +26,7 @@ class PostalRatesController extends Controller
      */
     public function create()
     {
-        return view('backend.pages.postal_rates.create');
+        return view('backend.pages.activities.form');
     }
 
     /**
@@ -39,24 +38,22 @@ class PostalRatesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'  => 'required',
-            'file'   =>'required'
+            'title'         => 'required',
+            'file'          =>'required',
         ]);
         if($request->hasFile('file')){
           
            $extension = ".".$request->file->getClientOriginalExtension();
            $name = basename($request->file->getClientOriginalName(), $extension).time();
            $name = $name.$extension;
-           $path = $request->file->move('assets/postal_rates', $name);
+           $path = $request->file->move('assets/activities', $name);
          }
 
-        $postal_rates = new PostalRate();
-        $postal_rates->title       = $request->title;
-        $postal_rates->description      = $request->description;
-        $postal_rates->file     = $path;
-        $postal_rates->date = $request->date;
-        $postal_rates->save();
-        return back()->with('message','Added');
+        $activity = new Activity();
+        $activity->title           = $request->title;
+        $activity->file            = $path;
+        $activity->save();
+        return back()->with('message','Added Successfully');
     }
 
     /**
@@ -78,8 +75,8 @@ class PostalRatesController extends Controller
      */
     public function edit($id)
     {
-        $postal_rates=PostalRate::find($id);
-        return view('backend.pages.postal_rates.create',compact('postal_rates'));
+        $activity=Activity::find($id);
+        return view('backend.pages.activities.form',compact('activity'));
     }
 
     /**
@@ -92,26 +89,24 @@ class PostalRatesController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'title'  => 'required',
+            'title'       => 'required',
         ]);
 
-        $postal_rates = PostalRate::find($id);
+        $activity = activity::find($id);
 
         if($request->hasFile('file')){
-          File::delete($postal_rates->file);
+          File::delete($activity->file);
            $extension = ".".$request->file->getClientOriginalExtension();
            $name = basename($request->file->getClientOriginalName(), $extension).time();
            $name = $name.$extension;
-           $path = $request->file->move('assets/postal_rates', $name);
+           $path = $request->file->move('assets/activities', $name);
          }
 
         
-        $postal_rates->title       = $request->title;
-        $postal_rates->description = $request->description;
-        $postal_rates->file         = $request->hasFile('file')?$path : $postal_rates->file;
-        $postal_rates->date         = $request->date;
-        $postal_rates->save();
-        return back()->with('message','Updated');
+        $activity->title              = $request->title;
+        $activity->file               = $request->hasFile('file')?$path : $activity->file;
+        $activity->save();
+        return back()->with('message','Updated Successfully');
     }
 
     /**
@@ -122,9 +117,9 @@ class PostalRatesController extends Controller
      */
     public function destroy($id)
     {
-         $postal_rates = PostalRate::find($id);
-         File::delete($postal_rates->file);         
-        PostalRate::destroy($id);
+          $activity = Activity::find($id);
+         File::delete($activity->file);         
+            Activity::destroy($id);
         return back()->with('message','successfully deleted');
     }
 }
