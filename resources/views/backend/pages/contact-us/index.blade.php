@@ -29,6 +29,10 @@
 			@include('backend.common.message')
 		<div class="row">
 			<div class="col-md-6">
+            <label class="col-form-label " for="first-name"><strong>ठेगाना:</strong><span class="required">*</span>
+	            </label>
+	            <input type="text" name="address" class="form-control " id="address" value="{{@$contact->address}}">
+
 	           	<label class="col-form-label " for="first-name"><strong>फोन:</strong><span class="required">*</span>
 	            </label>
 	            <input type="text" name="phone" class="form-control " id="phone" value="{{@$contact->phone}}">

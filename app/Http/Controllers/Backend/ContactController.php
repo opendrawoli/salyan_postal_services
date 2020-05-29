@@ -13,6 +13,7 @@ class ContactController extends Controller
 	}
     public function postContact(Request $request){
     	$request->validate([
+			'address'	=>'required',
     		'phone' 	=> 'required|numeric',
     		'fax' 	=> 'required',
     		'email' 	=> 'required|email',
@@ -20,6 +21,7 @@ class ContactController extends Controller
     	]);
 		$contact=Contact::where('meta_key','contact_us')->first();
 		if($contact){
+	    	$contact->address 		= $request->address;
 	    	$contact->phone 		= $request->phone;
 	    	$contact->fax 		= $request->fax;
 	    	$contact->email 	= $request->email;
@@ -34,6 +36,7 @@ class ContactController extends Controller
 
 			$contact = new Contact();
 			$contact->meta_key 			= "contact_us";
+			$contact->address 		= $request->address;
 			$contact->phone 		= $request->phone;
 	    	$contact->fax 		= $request->fax;
 	    	$contact->email 	= $request->email;

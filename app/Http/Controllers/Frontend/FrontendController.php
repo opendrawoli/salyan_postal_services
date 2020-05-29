@@ -13,6 +13,7 @@ use App\Model\StaffDetail;
 use App\Model\Contact;
 use App\Model\Message;
 use App\Model\MediaCenter\News;
+use App\Model\MediaCenter\Right;
 use DB;
 
 class FrontendController extends Controller
@@ -103,29 +104,61 @@ class FrontendController extends Controller
     }
 
     function getNews(){
-        $news=News::where('notice_type',1)->orderBy('nepali_date', 'desc')->paginate(3);
+        $news=News::where('notice_type',1)->orderBy('nepali_date', 'desc')->paginate(10);
+        return response()->json($news);
+    }
+
+    function getNewsByMonthOrYear(Request $request){
+        $date=$request->year.'-'.$request->month;
+        $news=News::whereRaw("DATE_FORMAT(nepali_date,'%Y-%m')='".$date."'")->where('notice_type',1)->orderBy('nepali_date','DESC')->get();
         return response()->json($news);
     }
 
     function getTenders(){
-        $tenders=News::where('notice_type',2)->orderBy('nepali_date', 'desc')->paginate(3);
+        $tenders=News::where('notice_type',2)->orderBy('nepali_date', 'desc')->paginate(10);
+        return response()->json($tenders);
+    }
+
+    function getTenderByMonthOrYear(Request $request){
+        $date=$request->year.'-'.$request->month;
+        $tenders=News::whereRaw("DATE_FORMAT(nepali_date,'%Y-%m')='".$date."'")->where('notice_type',2)->orderBy('nepali_date','DESC')->get();
         return response()->json($tenders);
     }
 
     function getCirculars(){
-        $circulars=News::where('notice_type',3)->orderBy('nepali_date', 'desc')->paginate(3);
+        $circulars=News::where('notice_type',3)->orderBy('nepali_date', 'desc')->paginate(10);
+        return response()->json($circulars);
+    }
+
+    function getCircularByMonthOrYear(Request $request){
+       
+        $date=$request->year.'-'.$request->month;
+        $circulars=News::whereRaw("DATE_FORMAT(nepali_date,'%Y-%m')='".$date."'")->where('notice_type',3)->orderBy('nepali_date','DESC')->get();
         return response()->json($circulars);
     }
 
     function getNotices(){
-        $notices=News::where('notice_type',4)->orderBy('nepali_date', 'desc')->paginate(3);
+        $notices=News::where('notice_type',4)->orderBy('nepali_date', 'desc')->paginate(10);
+        return response()->json($notices);
+    }
+
+    function getNoticeByMonthOrYear(Request $request){
+        $date=$request->year.'-'.$request->month;
+        $notices=News::whereRaw("DATE_FORMAT(nepali_date,'%Y-%m')='".$date."'")->where('notice_type',4)->orderBy('nepali_date','DESC')->get();
         return response()->json($notices);
     }
 
     function getPress(){
-        $press=News::where('notice_type',5)->orderBy('nepali_date', 'desc')->paginate(3);
+        $press=News::where('notice_type',5)->orderBy('nepali_date', 'desc')->paginate(10);
         return response()->json($press);
     }
+
+    function getPressByMonthOrYear(Request $request){
+        $date=$request->year.'-'.$request->month;
+        $press=News::whereRaw("DATE_FORMAT(nepali_date,'%Y-%m')='".$date."'")->where('notice_type',5)->orderBy('nepali_date','DESC')->get();
+        return response()->json($press);
+    }
+    
 
     function postMessage(Request $request){
         $request->validate([
@@ -151,8 +184,25 @@ class FrontendController extends Controller
 
     }
 
+
+    function RightToInfo(){
+        $righttoinfo=Right::paginate(10);
+        return response()->json($righttoinfo);
+    }
+
+    function latestNews(){
+        $news=News::orderBy('nepali_date','desc')->limit(6)->get() ;
+        return response()->json($news);
+    }
+
+    function getBySlugNews($slug){
+        $news=News::where('slug',$slug)->first() ;
+        return response()->json($news);
+    }
     
+    function getSingleServices($id){
+        $service= Service::find($id);
+        return response()->json($service);
+    }
 
 }
-
-
