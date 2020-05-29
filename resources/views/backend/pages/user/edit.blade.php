@@ -48,7 +48,7 @@
       <div class="col-md-6">
                 <label class="col-form-label " for="first-name"><strong>Email:</strong><span class="required">*</span>
               </label>
-               <input type="text" name="email" class="form-control " id="email" value="{{@$user->email}}">
+               <input type="email" name="email" class="form-control " id="email" value="{{@$user->email}}">
 
               
       </div>

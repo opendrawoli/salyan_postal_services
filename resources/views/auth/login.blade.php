@@ -27,14 +27,15 @@
             <p class="font-size-18">जिल्ला हुलाक कार्यालय सल्यान</p>
             <h3 class="brand-text"></h3>
           </div>
-              <form id='form-login' role="form" method="POST" action="">
+              <form id='form-login' role="form" method="POST" action="{{ route('login') }}">
+                @csrf
         <div class="form-group form-material floating">
-              <input id="email" type="email" class="form-control" name="email" value="" required autofocus>
+              <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
               <label class="floating-label">Email Address</label>
                       </div>
         
         <div class="form-group form-material floating">
-            <input id="password" type="password" class="form-control" name="password" required>
+            <input id="password" type="password" class="form-control" name="password" vvalue="{{ old('remember') ? 'checked' : '' }}" required>
             <label class="floating-label">Password</label>
                     </div>
                 <div class="form-group clearfix">
@@ -44,7 +45,9 @@
             </div>
         </div>
         
+        <div>
         <button id="btn-login" type="submit" class="btn btn-primary btn-block btn-lg margin-top-40">Sign in</button>
+      </div>
        
     </form>
         

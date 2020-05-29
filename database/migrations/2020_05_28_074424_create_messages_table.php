@@ -21,7 +21,7 @@ class CreateMessagesTable extends Migration
             $table->string('fax')->nullable();
             $table->string('subject');
             $table->text('message');
-            $table->boolean('status')->default();
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

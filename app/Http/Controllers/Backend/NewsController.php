@@ -42,12 +42,12 @@ class NewsController extends Controller
 
 public function statusList($request){
     return [
-        'सबै'           =>News::count(),
-        'समाचार'       =>News::where('notice_type',1)->count(),
-        'बोलपत्र'       =>News::where('notice_type',2)->count(),
-        'परिपत्र'       =>News::where('notice_type',3)->count(),
-        'सूचना'       =>News::where('notice_type',4)->count(),
-        'प्रेस विज्ञप्ति'       =>News::where('notice_type',5)->count(),
+        'सबै'               =>News::count(),
+        'समाचार'            =>News::where('notice_type',1)->count(),
+        'बोलपत्र'            =>News::where('notice_type',2)->count(),
+        'परिपत्र'            =>News::where('notice_type',3)->count(),
+        'सूचना'             =>News::where('notice_type',4)->count(),
+        'प्रेस विज्ञप्ति'      =>News::where('notice_type',5)->count(),
 
     ];
 }

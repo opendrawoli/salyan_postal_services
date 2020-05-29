@@ -13,9 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
@@ -68,6 +65,11 @@ Route::namespace('Backend')->prefix('admin')->as('admin.')->group( function(){
 	Route::resource('/activity','ActivitiesController');
 	/* user  */
 	Route::resource('/user','UsersController');
+
+	/* Message */
+	Route::get('/message','MessageController@message')->name('getMessage');
+	Route::delete('/message/{message}','MessageController@deleteMessage')->name('deleteMessage');
+	Route::get('/seenMessage/{message}','MessageController@seenMessage')->name('seenMessage');
 
 
 
