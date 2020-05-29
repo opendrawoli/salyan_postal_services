@@ -25,16 +25,30 @@ Route::get('underneath','Frontend\FrontendController@getUnderneath');
 Route::get('citizen_charter','Frontend\FrontendController@getCitizenCharter');
 Route::get('postal_rates','Frontend\FrontendController@getPostalRates');
 Route::get('services','Frontend\FrontendController@getServices');
+Route::get('service/{id}','Frontend\FrontendController@getSingleServices');
 Route::get('act_and_regulation','Frontend\FrontendController@getActAndRegulation');
 Route::get('staffs','Frontend\FrontendController@getStaff');
 Route::get('contact_us','Frontend\FrontendController@getContact');
 Route::get('homepage','Frontend\FrontendController@getHomePage');
 
 Route::get('news','Frontend\FrontendController@getNews');
-Route::get('tenders','Frontend\FrontendController@getTenders');
-Route::get('circulars','Frontend\FrontendController@getCirculars');
-Route::get('notices','Frontend\FrontendController@getNotices');
-Route::get('press','Frontend\FrontendController@getPress');
+Route::post('news','Frontend\FrontendController@getNewsByMonthOrYear');
 
+Route::get('tenders','Frontend\FrontendController@getTenders');
+Route::post('tenders','Frontend\FrontendController@getTenderByMonthOrYear');
+
+Route::get('circulars','Frontend\FrontendController@getCirculars');
+Route::post('circulars','Frontend\FrontendController@getCircularByMonthOrYear');
+
+Route::get('notices','Frontend\FrontendController@getNotices');
+Route::post('notices','Frontend\FrontendController@getNoticeByMonthOrYear');
+
+Route::get('press','Frontend\FrontendController@getPress');
+Route::post('press','Frontend\FrontendController@getPressByMonthOrYear');
+
+Route::get('right_to_info','Frontend\FrontendController@RightToInfo');
+
+Route::get('latest_notice','Frontend\FrontendController@latestNews');
+Route::get('news_notice/{slug}','Frontend\FrontendController@getBySlugNews');
 
 Route::post('message','Frontend\FrontendController@postMessage');
