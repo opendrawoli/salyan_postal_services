@@ -22,6 +22,7 @@ class RegisterController extends Controller
     |
     */
 
+
     use RegistersUsers;
 
     /**
@@ -56,6 +57,13 @@ class RegisterController extends Controller
         ]);
     }
 
+    function showRegistrationForm(){
+        abort(404,'The Page not found');
+    }
+
+    function register(Request $request){
+        abort(404,'Sorry This Operation Not Found');
+    }
     /**
      * Create a new user instance after a valid registration.
      *
@@ -64,10 +72,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        return ;
     }
 }

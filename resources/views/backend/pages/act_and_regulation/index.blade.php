@@ -45,10 +45,10 @@
                       <td>{{$act_and_regulation->description}}</td>
                       <td>{{$act_and_regulation->date}}</td>
                       <td><a href="{{asset($act_and_regulation->file)}}" download><i class="fa fa-download"></i> {{$act_and_regulation->title}}</a></td>
-                      <td><a href="{{route('admin.act_and_regulation.edit',$act_and_regulation->id) }}" class="btn btn-info btn-sm">Edit</a>
+                      <td><a href="{{route('SALYANPOSTAL22200.act_and_regulation.edit',$act_and_regulation->id) }}" class="btn btn-info btn-sm">Edit</a>
                         <a href="javascript:void(0);" class="btn btn-danger btn-sm" onclick="deleteRow('postalRate{{$act_and_regulation->id }}')">Delete</a>
 
-                        <form id="postalRate{{$act_and_regulation->id}}" action="{{route('admin.act_and_regulation.destroy',$act_and_regulation->id)}}" method="post">
+                        <form id="postalRate{{$act_and_regulation->id}}" action="{{route('SALYANPOSTAL22200.act_and_regulation.destroy',$act_and_regulation->id)}}" method="post">
                           @csrf
                           @method('DELETE')
                         </form>

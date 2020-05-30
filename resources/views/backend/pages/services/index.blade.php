@@ -47,10 +47,10 @@
                               <img src="{{asset($service->file)}}" height="75" width="75" alt="">
                             </td>
                            <td>
-                             <a href="{{route('admin.service.edit',$service->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit" title="Edit"></i></a>
+                             <a href="{{route('SALYANPOSTAL22200.service.edit',$service->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit" title="Edit"></i></a>
                                 <a href="javascript:void(0);" class="btn btn-danger btn-sm" onclick="deleteRow('service{{$service->id }}')" title="Delete"><i class="fa fa-trash"></i></a>
 
-                                <form id="service{{$service->id}}" action="{{route('admin.service.destroy',$service->id)}}" method="post">
+                                <form id="service{{$service->id}}" action="{{route('SALYANPOSTAL22200.service.destroy',$service->id)}}" method="post">
                                   @csrf
                                   @method('DELETE')
                                 </form>

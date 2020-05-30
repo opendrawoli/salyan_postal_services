@@ -43,10 +43,10 @@
                       <td>{{$user->name}}</td>
                       <td>{{$user->email}}</td>
                       <td>{{$user->role}}</td>
-                      <td><a href="{{route('admin.user.edit',$user->id) }}" class="btn btn-info btn-sm">Edit</a>
+                      <td><a href="{{route('SALYANPOSTAL22200.user.edit',$user->id) }}" class="btn btn-info btn-sm">Edit</a>
                         <a href="javascript:void(0);" class="btn btn-danger btn-sm" onclick="deleteRow('postalRate{{$user->id }}')">Delete</a>
 
-                        <form id="postalRate{{$user->id}}" action="{{route('admin.user.destroy',$user->id)}}" method="post">
+                        <form id="postalRate{{$user->id}}" action="{{route('SALYANPOSTAL22200.user.destroy',$user->id)}}" method="post">
                           @csrf
                           @method('DELETE')
                         </form>

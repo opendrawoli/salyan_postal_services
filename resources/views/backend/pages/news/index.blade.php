@@ -71,10 +71,10 @@
                             @if($news->file)
                             <a href="{{asset($news->file)}}" class="btn btn-info btn-sm" title="{{$news->title}}" download><i class="fa fa-download" ></i></a>
                             @endif
-                             <a href="{{route('admin.news.edit',$news->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit" title="Edit"></i></a>
+                             <a href="{{route('SALYANPOSTAL22200.news.edit',$news->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit" title="Edit"></i></a>
                                 <a href="javascript:void(0);" class="btn btn-danger btn-sm" onclick="deleteRow('news{{$news->id }}')" title="Delete"><i class="fa fa-trash"></i></a>
 
-                                <form id="news{{$news->id}}" action="{{route('admin.news.destroy',$news->id)}}" method="post">
+                                <form id="news{{$news->id}}" action="{{route('SALYANPOSTAL22200.news.destroy',$news->id)}}" method="post">
                                   @csrf
                                   @method('DELETE')
                                 </form>

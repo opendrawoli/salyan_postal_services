@@ -57,10 +57,10 @@
                               <img src="{{asset($staff->file)}}" height="75" width="75" alt="">
                             </td>
                            <td>
-                             <a href="{{route('admin.staff.edit',$staff->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit" title="Edit"></i></a>
+                             <a href="{{route('SALYANPOSTAL22200.staff.edit',$staff->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit" title="Edit"></i></a>
                                 <a href="javascript:void(0);" class="btn btn-danger btn-sm" onclick="deleteRow('staff{{$staff->id }}')" title="Delete"><i class="fa fa-trash"></i></a>
 
-                                <form id="staff{{$staff->id}}" action="{{route('admin.staff.destroy',$staff->id)}}" method="post">
+                                <form id="staff{{$staff->id}}" action="{{route('SALYANPOSTAL22200.staff.destroy',$staff->id)}}" method="post">
                                   @csrf
                                   @method('DELETE')
                                 </form>

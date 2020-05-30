@@ -21,7 +21,7 @@
       <div class="x_content">
         <br />
 
-        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{route('admin.postCitizenCharter')}}" method="POST" enctype="multipart/form-data">
+        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{route('SALYANPOSTAL22200.postCitizenCharter')}}" method="POST" enctype="multipart/form-data">
 			@csrf
           @method('POST')
 		<div class="row">

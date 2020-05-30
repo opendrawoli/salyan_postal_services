@@ -22,7 +22,7 @@
       <div class="x_content">
         <br />
 
-        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{route('admin.postAbout')}}" method="POST">
+        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{route('SALYANPOSTAL22200.postAbout')}}" method="POST">
 			@csrf
           @method('POST')
 

@@ -21,7 +21,7 @@
       <div class="x_content">
         <br />
 
-        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{ (@$act_and_regulation)? route('admin.act_and_regulation.update',$act_and_regulation->id) : route('admin.act_and_regulation.store')}}" method="POST" enctype="multipart/form-data">
+        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{ (@$act_and_regulation)? route('SALYANPOSTAL22200.act_and_regulation.update',$act_and_regulation->id) : route('SALYANPOSTAL22200.act_and_regulation.store')}}" method="POST" enctype="multipart/form-data">
 			@csrf
       @if(@$act_and_regulation)
           @method('PUT')
@@ -56,7 +56,7 @@
           <div class="ln_solid"></div>
           <div class="item form-group">
             <div class="col-md-6 col-sm-6 offset-md-5">
-              <a href="{{route('admin.act_and_regulation.index')}}" class="btn btn-secondary" type="button">Cancel</a>
+              <a href="{{route('SALYANPOSTAL22200.act_and_regulation.index')}}" class="btn btn-secondary" type="button">Cancel</a>
 			   <button class="btn btn-primary" type="reset">Reset</button>
               <button type="submit" class="btn btn-success">Submit</button>
             </div>

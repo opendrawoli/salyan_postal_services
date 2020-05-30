@@ -9,7 +9,7 @@
         	<?php $currentUser = Auth::user() ?>
           <li class="nav-item dropdown open" style="padding-left: 15px;">
             <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-              <img src="images/img.jpg" alt="">{{$currentUser->name}}
+              <img src="images/img.jpg" alt="">{{@$currentUser->name}}
             </a>
             <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item"  href="javascript:;"> Profile</a>
@@ -38,7 +38,7 @@
             <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
               @foreach($messages as $message)
               <li class="nav-item">
-                <a href="{{route('admin.seenMessage',$message->id)}}" class="dropdown-item">
+                <a href="{{route('SALYANPOSTAL22200.seenMessage',$message->id)}}" class="dropdown-item">
                   <span>
                     <span>{{$message->fullname}}</span>
                     <span class="time">{{$message->created_at->diffForHumans()}}</span>
@@ -52,7 +52,7 @@
              
               <li class="nav-item">
                 <div class="text-center">
-                  <a href="{{route('admin.getMessage')}}" class="dropdown-item">
+                  <a href="{{route('SALYANPOSTAL22200.getMessage')}}" class="dropdown-item">
                     <strong>See All</strong>
                   </a>
                 </div>

@@ -22,7 +22,7 @@
         <br />
 
         <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left
-        " action="@if(@$service) {{route('admin.service.update',@$service->id)}} @else {{route('admin.service.store')}} @endif" method="POST" enctype="multipart/form-data">
+        " action="@if(@$service) {{route('SALYANPOSTAL22200.service.update',@$service->id)}} @else {{route('SALYANPOSTAL22200.service.store')}} @endif" method="POST" enctype="multipart/form-data">
      @csrf
       @if(@$service)
       @method('PUT')
@@ -66,7 +66,7 @@
           <div class="ln_solid"></div>
           <div class="item form-group">
             <div class="col-md-6 col-sm-6 offset-md-5">
-              <a href="{{route('admin.service.index')}}" class="btn btn-secondary" type="button">Cancel</a>
+              <a href="{{route('SALYANPOSTAL22200.service.index')}}" class="btn btn-secondary" type="button">Cancel</a>
               <button class="btn btn-danger" type="reset">Reset</button>
               <button type="submit" class="btn btn-success">Submit</button>
             </div>

@@ -24,7 +24,7 @@
                     <div class="row">
                       <div class="col-sm-3 mail_list_column">
                         @foreach($messages as $msg)
-                        <a href="{{route('admin.seenMessage',$msg->id)}}">
+                        <a href="{{route('SALYANPOSTAL22200.seenMessage',$msg->id)}}">
                           <div class="mail_list">
                             <div class="left">
                               <i class="fa fa-circle"></i>
@@ -52,7 +52,7 @@
                               <p class="date"> {{$message->created_at}}</p>
                             </div>
                             <div class="col-md-12">
-                              <h4>{{$message->subject}}</h4>
+                              <h4>Subject: {{$message->subject}}</h4>
                             </div>
                           </div>
                           <div class="sender-info">
@@ -65,8 +65,10 @@
                               </div>
                             </div>
                           </div>
+                          <hr/>
                           <div class="view-mail">
-                            <p>{!! $message->message !!}</p>
+
+                            <p> {!! $message->message !!}</p>
                           </div>
                         </div>
 
