@@ -22,25 +22,25 @@
       <div class="x_content">
         <br />
 
-        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{route('admin.user.update',$user->id)}}" method="POST">
+        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{route('admin.user.update',$user->id)}}" method="POST" enctype="multipart/form-data">
 			@csrf
-          @method('POST')
+          @method('PUT')
 
 			@include('backend.common.message')
 		<div class="row">
 			<div class="col-md-6">
 	           	<label class="col-form-label " for="first-name"><strong>Name:</strong><span class="required">*</span>
 	            </label>
-	            <input type="text" name="name" class="form-control " id="name" value="{{@$user->name}}">
+	            <input type="text" name="name" class="form-control " id="name" value="{{$user->name}}">
 
                 <label for="heard"><h6><strong>select user *:</strong></h6></label>
                           <select id="role" class="form-control" name="role">
                             <option value=""> ...select user....</option>
-                            <option value="1" @if(@$user->role==1)? selected @endif
+                            <option value="1" @if($user->role==1)? selected @endif
                               {{ old('role') }}>Admin</option>
-                            <option value="2"@if(@$user->role==2)? selected @endif
+                            <option value="2"@if($user->role==2)? selected @endif
                               {{ old('role') }}>Editor</option>
-                            <option value="3"@if(@$user->role==3)? selected @endif
+                            <option value="3"@if($user->role==3)? selected @endif
                               {{ old('role') }}>Author</option>
                           </select>
 	                     
@@ -48,8 +48,16 @@
       <div class="col-md-6">
                 <label class="col-form-label " for="first-name"><strong>Email:</strong><span class="required">*</span>
               </label>
-               <input type="email" name="email" class="form-control " id="email" value="{{@$user->email}}">
+               <input type="email" name="email" class="form-control " id="email" value="{{$user->email}}">
 
+            <label class="col-form-label " for="first-name"><strong>फोटो</strong><span class="required">*</span>
+              </label>
+              <input type="file" name="file" class="form-control" id="file" value="{{$user->file}}"><br>
+            @if($user->file)
+          <div class="col-md-9">
+            <img src="{{ asset($user->file) }}" style="width: 150px;">
+          </div>
+          @endif
               
       </div>
 	
@@ -58,7 +66,7 @@
           <div class="ln_solid"></div>
           <div class="item form-group">
             <div class="col-md-6 col-sm-6 offset-md-5">
-              <a href="{{route('admin.user.index')}}" class="btn btn-secondary" type="button">Cancel</a>
+              <a href="{{route('admin.user.index')}}" class="btn btn-secondary" type="button">Back</a>
 			         <button class="btn btn-primary" type="reset">Reset</button>
               <button type="submit" class="btn btn-success">Submit</button>
             </div>

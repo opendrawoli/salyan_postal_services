@@ -79,7 +79,7 @@ public function statusList($request){
             'slug'              => 'required|unique:news',
             'nepali_date'       => 'required',
             'notice_type'       => 'required',
-            'thumbnail'         => 'image|mimes:jpeg,png,jpg|max:2048',
+            'thumbnail'         => 'thumbnail|mimes:jpeg,png,jpg|max:2048',
         ]);
         $path='';
         $path1='';

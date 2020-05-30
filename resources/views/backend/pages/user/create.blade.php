@@ -22,7 +22,7 @@
       <div class="x_content">
         <br />
 
-        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{route('admin.user.store')}}" method="POST">
+        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{route('admin.user.store')}}" method="POST" enctype="multipart/form-data">
 			@csrf
           @method('POST')
 
@@ -57,6 +57,10 @@
                <label class="col-form-label " for="first-name"><strong>Confirm Password:</strong><span class="required">*</span>
               </label>
                <input type="text" name="password_confirmation" class="form-control " id="password_confirmation">
+
+                <label class="col-form-label " for="first-name"><strong>Image:</strong><span class="required">*</span>
+              </label>
+               <input type="file" name="file" class="form-control " id="file">
       </div>
 		</div>
                    

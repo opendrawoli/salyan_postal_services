@@ -1,67 +1,59 @@
-@extends('backend.layout.app')
+ @extends('backend.layout.app')
 @section('content')
-<div class="col-md-12 col-sm-12 ">
-      <div class="x_panel">
-        <div class="x_title">
-          <h2>User<small></small></h2>
-          <ul class="nav navbar-right panel_toolbox">
-            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                </div>
-            </li>
-            <li><a class="close-link"><i class="fa fa-close"></i></a>
-            </li>
-          </ul>
-          <div class="clearfix"></div>
-        </div>
-            <div class="x_content">
-                <div class="row">
-                    <div class="col-sm-12">
-                      <div class="card-box table-responsive">
-              <p class="text-muted font-13 m-b-30">
-               
-              </p>
-    
-                <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-                  <thead>
-                    <tr>
-                      <th>S.N.</th>
-                      <th>Name  </th>
-                      <th>Email  </th>
-                      <th>Role</th>
-                      <th>Action </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php $count=0; ?>
-                    @foreach($users as $user):
-                    <tr>
-                      <td><?= ++$count ?></td>
-                      <td>{{$user->name}}</td>
-                      <td>{{$user->email}}</td>
-                      <td>{{$user->role}}</td>
-                      <td><a href="{{route('admin.user.edit',$user->id) }}" class="btn btn-info btn-sm">Edit</a>
-                        <a href="javascript:void(0);" class="btn btn-danger btn-sm" onclick="deleteRow('postalRate{{$user->id }}')">Delete</a>
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>कर्मचारी विवरण</h3>
+              </div>
+            </div>
 
-                        <form id="postalRate{{$user->id}}" action="{{route('admin.user.destroy',$user->id)}}" method="post">
-                          @csrf
-                          @method('DELETE')
-                        </form>
-                      </td>
-                    </tr>
-                    @endforeach
-                  
-                  </tbody>
-                </table>
-    
-    
+            <div class="clearfix"></div>
+
+            <div class="row">
+                <div class="x_panel">
+                  <div class="x_content">
+                      <div class="col-md-12 col-sm-12  text-center">
+                        <ul class="pagination pagination-split">
+                         {{$users->links()}}
+                        </ul>
+                      </div>
+
+                      <div class="clearfix"></div>
+                    @foreach($users as $user)
+                      <div class="col-md-4 col-sm-4  profile_details">
+                        <div class="well profile_view">
+                          <div class="col-sm-12">
+                            <h4 class="brief"><i>User</i></h4>
+                            <div class="left col-md-7 col-sm-7">
+                              <h2>{{$user->name}}</h2>
+                              <ul class="list-unstyled">
+                                <li> इमेल:{{$user->email}} </li>
+                                <li><i class="fa fa-phone"></i> फोन:{{$user->phone}} </li>
+                              </ul>
+                            </div>
+                            <div class="right col-md-5 col-sm-5 text-center">
+                              <img src="{{asset($user->file)}}" alt="" class="img-circle img-fluid">
+                            </div>
+                          </div>
+                          <div class=" profile-bottom text-center">
+                             <div class=" col-sm-2 emphasis">
+                                <a href="{{route('admin.user.edit',$user->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit" title="Edit">Edit</i></a>
+                            </div>
+                            <div class=" col-sm-4 emphasis">
+                                <a href="javascript:void(0);" class="btn btn-danger btn-sm" onclick="deleteRow('user{{$user->id }}')" title="Delete"><i class="fa fa-trash"></i>Delete</a>
+
+                                <form id="user{{$user->id}}" action="{{route('admin.user.destroy',$user->id)}}" method="post">
+                                  @csrf
+                                  @method('DELETE')
+                                </form>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                      @endforeach
+
+                  </div>
+                </div>
             </div>
           </div>
-          </div>
-          </div>
-          </div>
-        </div>
-@endsection
+        @endsection

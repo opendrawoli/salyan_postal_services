@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
+use File;
 use Illuminate\Support\Facades\Hash;
+use Intervention\Image\Facades\Image;
 
 class UsersController extends Controller
 {
@@ -21,7 +23,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users= User::all();
+        $users= User::paginate(12);
         return view('backend.pages.user.index',compact('users'));
     }
 
@@ -48,8 +50,17 @@ class UsersController extends Controller
              'name' => 'required',
             'email' => 'email|required|unique:users',
             'password' => 'required|confirmed',
+             'file'    => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
-        $user = new User();
+        $path='';
+         $user = new User(); 
+        if($request->hasFile('file')){
+           $extension = ".".$request->file->getClientOriginalExtension();
+           $name = basename($request->file->getClientOriginalName(), $extension).time();
+           $name = $name.$extension;
+           $path = $request->file->move('assets/user', $name);
+         }
+        $user->file = $path;
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password= Hash::make($request->password);
@@ -90,13 +101,23 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $request->validate([
             'name' => 'required',
             'email' => 'email|required|unique:users,email,'.$id,
             'password' =>'required_with:password_confirmation|confirmed',
+             'file'    => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
+         $path='';
         $user = User::findOrFail($id);
+        if($request->hasFile('file'))
+        {
+             File::delete($user->file);
+           $extension = ".".$request->file->getClientOriginalExtension();
+           $name = basename($request->file->getClientOriginalName(), $extension).time();
+           $name = $name.$extension;
+           $path = $request->file->move('assets/user', $name);
+         }
+        $user->file = $request->hasFile('file')?$path:$user->file;
         $user->name = $request->name;
         $user->email = $request->email;
         $user->save();

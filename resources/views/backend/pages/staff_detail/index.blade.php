@@ -1,81 +1,63 @@
-@extends('backend.layout.app')
+ @extends('backend.layout.app')
 @section('content')
-<div class="col-md-12 col-sm-12 ">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>कर्मचारी विवरण</h3>
+              </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row">
                 <div class="x_panel">
-                  <div class="x_title">
-                    <h2>कर्मचारी विवरण</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings</a>
-                          </div>
-                      </li>
-                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                      </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
                   <div class="x_content">
-                      <div class="row">
-                        <div class="col-sm-12">
-                            <div class="card-box table-responsive">
-          
-                      <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-                        <thead>
-                          <tr>
-                            <th>S.N.</th>
-                            <th>कर्मचारीको नाम</th>
-                            <th>पद</th>
-                            <th>इमेल</th>
-                            <th>कार्यलय फोन.</th>
-                            <th>फोटो</th>
-                            <th>सम्पादन</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <?php
-                          $count =0;
-                          ?>
-                          @if($staffs->count()>0)
-                          @foreach($staffs as $staff)
-                          <tr>
-                            <td>{{ ++$count }}</td>
-                            <td>{{$staff->name}}</td>
-                            <td>
-                              @if($staff->designation==0) कार्यलय प्रमुख
+                      <div class="col-md-12 col-sm-12  text-center">
+                        <ul class="pagination pagination-split">
+                         {{$staffs->links()}}
+                        </ul>
+                      </div>
+
+                      <div class="clearfix"></div>
+                    @foreach($staffs as $staff)
+                      <div class="col-md-4 col-sm-4  profile_details">
+                        <div class="well profile_view">
+                          <div class="col-sm-12">
+                            <h4 class="brief"><i>@if($staff->designation==0) कार्यलय प्रमुख
                               @elseif($staff->designation==1) नायब सुब्बा
                               @else
                               {{$staff->designation}} 
-                               @endif
-                            </td>
-                            <td>{{$staff->email}} </td>
-                            <td>{{$staff->phone}} </td>
-                            <td>
-                              <img src="{{asset($staff->file)}}" height="75" width="75" alt="">
-                            </td>
-                           <td>
-                             <a href="{{route('admin.staff.edit',$staff->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit" title="Edit"></i></a>
-                                <a href="javascript:void(0);" class="btn btn-danger btn-sm" onclick="deleteRow('staff{{$staff->id }}')" title="Delete"><i class="fa fa-trash"></i></a>
+                               @endif</i></h4>
+                            <div class="left col-md-7 col-sm-7">
+                              <h2>{{$staff->name}}</h2>
+                              <ul class="list-unstyled">
+                                <li> इमेल:{{$staff->email}} </li>
+                                <li><i class="fa fa-phone"></i> फोन:{{$staff->phone}} </li>
+                              </ul>
+                            </div>
+                            <div class="right col-md-5 col-sm-5 text-center">
+                              <img src="{{asset($staff->file)}}" alt="" class="img-circle img-fluid">
+                            </div>
+                          </div>
+                          <div class=" profile-bottom text-center">
+                             <div class=" col-sm-2 emphasis">
+                                <a href="{{route('admin.staff.edit',$staff->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit" title="Edit">Edit</i></a>
+                            </div>
+                            <div class=" col-sm-4 emphasis">
+                                <a href="javascript:void(0);" class="btn btn-danger btn-sm" onclick="deleteRow('staff{{$staff->id }}')" title="Delete"><i class="fa fa-trash"></i>Delete</a>
 
                                 <form id="staff{{$staff->id}}" action="{{route('admin.staff.destroy',$staff->id)}}" method="post">
                                   @csrf
                                   @method('DELETE')
                                 </form>
-                           </td>
-                           
-                          </tr>
-                           @endforeach
-                            @endif
-                        </tbody>
-                      </table>
-          
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                      @endforeach
+
                   </div>
                 </div>
-                </div>
-                </div>
-                </div>
-              </div>
-@endsection
+            </div>
+          </div>
+        @endsection

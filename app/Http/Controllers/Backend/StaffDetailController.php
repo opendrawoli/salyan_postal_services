@@ -17,7 +17,7 @@ class StaffDetailController extends Controller
     public function index()
     {
         $designations = Designation::all();
-        $staffs = StaffDetail::all();
+        $staffs = StaffDetail::paginate(12);
         return view('backend.pages.staff_detail.index',compact('staffs','designations'));
     }
 
@@ -46,7 +46,7 @@ class StaffDetailController extends Controller
             'designation'  => 'required',
             'phone'        => 'required',
             'email'        => 'email',
-            'file'         => 'required',
+             'file'        => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
         $path='';
          $staff = new StaffDetail(); 
@@ -103,6 +103,7 @@ class StaffDetailController extends Controller
             'designation'  => 'required',
             'phone'        => 'required|numeric',
             'email'        => 'email',
+             'file'        => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
         $path='';
          $staff = StaffDetail::find($id); 

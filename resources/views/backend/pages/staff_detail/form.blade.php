@@ -80,7 +80,7 @@
           <div class="ln_solid"></div>
           <div class="item form-group">
             <div class="col-md-6 col-sm-6 offset-md-5">
-              <a href="{{route('admin.staff.index')}}" class="btn btn-secondary" type="button">Cancel</a>
+              <a href="{{route('admin.staff.index')}}" class="btn btn-secondary" type="button">Back</a>
               <button class="btn btn-danger" type="reset">Reset</button>
               <button type="submit" class="btn btn-success">Submit</button>
             </div>
