@@ -24,7 +24,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users= User::where('status',1)->paginate(12);
+        $users= User::paginate(12);
         return view('backend.pages.user.index',compact('users'));
     }
 
@@ -93,9 +93,9 @@ class UsersController extends Controller
         $user = User::findOrFail($id);
        return view('backend.pages.user.edit',compact('user'));
     }
-     public function profile($id)
+     public function profile()
     {
-        $user = User::findOrFail($id);
+        $user = Auth::user();
        return view('backend.pages.user.profile',compact('user'));
     }
 
@@ -127,7 +127,6 @@ class UsersController extends Controller
          }
         $user->file = $request->hasFile('file')?$path:$user->file;
         $user->name = $request->name;
-        $user->status = 1;
         $user->email = $request->email;
         $user->password=Hash::make($request->password);
         $user->save();

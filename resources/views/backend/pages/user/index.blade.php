@@ -24,7 +24,7 @@
                       <div class="col-md-4 col-sm-4  profile_details">
                         <div class="well profile_view">
                           <div class="col-sm-12">
-                            <h4 class="brief"><i>User</i></h4>
+                            <h4 >User</h4>
                             <div class="left col-md-8 col-sm-7">
                               <h2>{{$user->name}}</h2>
                               <ul class="list-unstyled">
@@ -36,7 +36,7 @@
                             </div>
                           </div>
                           
-                           @if($user->status ==1 )
+                           @if($currentUser->status ==1 )
                             @if($user->id ==$currentUser->id)
                           <div class=" profile-bottom text-center">
                               <div class=" col-sm-4 emphasis">

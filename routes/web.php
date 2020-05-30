@@ -70,7 +70,7 @@ Route::namespace('Backend')->prefix('SALYANPOSTAL22200')->as('SALYANPOSTAL22200.
 	Route::resource('/activity','ActivitiesController');
 	/* user  */
 	Route::resource('/user','UsersController');
-	Route::post('/user/{profile}/','UsersController@profile')->name('user.profile');
+	Route::get('/users/profile','UsersController@profile')->name('user.profile');
 
 	/* Message */
 	Route::get('/message','MessageController@message')->name('getMessage');

@@ -91,3 +91,12 @@
 
 </div>
 
+
+
+ <Head
+              title="हाम्रो बारेमा"
+              description={about.description_nepali.substring(0, 100)}
+              keywords="हाम्रो बारेमा, About US, Salyan Postal Service"
+              title="जिल्ला हुलाक कार्यालय सल्यान परिचय"
+              pathname="department/aboutus"
+            />

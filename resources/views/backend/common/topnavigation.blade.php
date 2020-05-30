@@ -12,7 +12,7 @@
               <img src="{{asset(@$currentUser->file)}}" alt="">{{@$currentUser->name}}
             </a>
             <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item"  href="{{route('SALYANPOSTAL22200.user.profile',$currentUser->id)}}"> Profile</a>
+              <a class="dropdown-item"  href="{{route('SALYANPOSTAL22200.user.profile')}}"> Profile</a>
                <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
