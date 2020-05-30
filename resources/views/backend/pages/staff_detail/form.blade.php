@@ -22,7 +22,7 @@
         <br />
 
         <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left
-        " action="@if(isset($staff)) {{route('admin.staff.update',$staff->id)}} @else {{route('admin.staff.store')}} @endif" method="POST" enctype="multipart/form-data">
+        " action="@if(isset($staff)) {{route('SALYANPOSTAL22200.staff.update',$staff->id)}} @else {{route('SALYANPOSTAL22200.staff.store')}} @endif" method="POST" enctype="multipart/form-data">
      @csrf
       @if(isset($staff))
       @method('PUT')
@@ -80,7 +80,11 @@
           <div class="ln_solid"></div>
           <div class="item form-group">
             <div class="col-md-6 col-sm-6 offset-md-5">
+<<<<<<< HEAD
               <a href="{{route('admin.staff.index')}}" class="btn btn-secondary" type="button">Back</a>
+=======
+              <a href="{{route('SALYANPOSTAL22200.staff.index')}}" class="btn btn-secondary" type="button">Cancel</a>
+>>>>>>> 92de31a064d52d4c4eb2b2eebe6b8e3b842164b7
               <button class="btn btn-danger" type="reset">Reset</button>
               <button type="submit" class="btn btn-success">Submit</button>
             </div>
@@ -123,12 +127,12 @@ $('#btn_designation').click(function(e) {
                         }
                         console.log(data);
                         $.ajax({
-                          url: "{{ route('admin.designationAdd') }}",
+                          url: "{{ route('SALYANPOSTAL22200.designationAdd') }}",
                           method: "post",
                           data: data,
                           success: function(data) {
                             // AddSuccessMessage();
-                              window.location.href = "{{route('admin.staff.create')}}";
+                              window.location.href = "{{route('SALYANPOSTAL22200.staff.create')}}";
                                   },
                                   error: function(error) {
                                     Swal.fire({
@@ -136,7 +140,7 @@ $('#btn_designation').click(function(e) {
                                       title: 'Oops...',
                                       text: "यो पद पहिले नै छ",
                                     });
-                                     window.location.href = "{{route('admin.staff.create')}}";
+                                     window.location.href = "{{route('SALYANPOSTAL22200.staff.create')}}";
                                   }
                         });
                     }

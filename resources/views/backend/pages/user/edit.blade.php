@@ -22,7 +22,11 @@
       <div class="x_content">
         <br />
 
+<<<<<<< HEAD
         <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{route('admin.user.update',$user->id)}}" method="POST" enctype="multipart/form-data">
+=======
+        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{route('SALYANPOSTAL22200.user.update',$user->id)}}" method="POST">
+>>>>>>> 92de31a064d52d4c4eb2b2eebe6b8e3b842164b7
 			@csrf
           @method('PUT')
 
@@ -66,7 +70,11 @@
           <div class="ln_solid"></div>
           <div class="item form-group">
             <div class="col-md-6 col-sm-6 offset-md-5">
+<<<<<<< HEAD
               <a href="{{route('admin.user.index')}}" class="btn btn-secondary" type="button">Back</a>
+=======
+              <a href="{{route('SALYANPOSTAL22200.user.index')}}" class="btn btn-secondary" type="button">Cancel</a>
+>>>>>>> 92de31a064d52d4c4eb2b2eebe6b8e3b842164b7
 			         <button class="btn btn-primary" type="reset">Reset</button>
               <button type="submit" class="btn btn-success">Submit</button>
             </div>

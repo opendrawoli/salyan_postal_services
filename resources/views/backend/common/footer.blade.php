@@ -1,6 +1,6 @@
  <footer>
 	  <div class="pull-right">
-	    Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+	   Copyright @ 2020 जिल्ला हुलाक कार्यालय सल्यान  <a href="https://sathisoft4.com"> Power By : Sathisoft Pvt. Ltd.</a>
 	  </div>
 	  <div class="clearfix"></div>
 	</footer>

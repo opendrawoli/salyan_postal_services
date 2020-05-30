@@ -45,10 +45,10 @@
                       <td>{{$postal_rate->description}}</td>
                       <td>{{$postal_rate->date}}</td>
                       <td><a href="{{asset($postal_rate->file)}}" download><i class="fa fa-download"></i> {{$postal_rate->title}}</a></td>
-                      <td><a href="{{route('admin.postal_rates.edit',$postal_rate->id) }}" class="btn btn-info btn-sm">Edit</a>
+                      <td><a href="{{route('SALYANPOSTAL22200.postal_rates.edit',$postal_rate->id) }}" class="btn btn-info btn-sm">Edit</a>
                         <a href="javascript:void(0);" class="btn btn-danger btn-sm" onclick="deleteRow('postalRate{{$postal_rate->id }}')">Delete</a>
 
-                        <form id="postalRate{{$postal_rate->id}}" action="{{route('admin.postal_rates.destroy',$postal_rate->id)}}" method="post">
+                        <form id="postalRate{{$postal_rate->id}}" action="{{route('SALYANPOSTAL22200.postal_rates.destroy',$postal_rate->id)}}" method="post">
                           @csrf
                           @method('DELETE')
                         </form>

@@ -21,7 +21,7 @@
       <div class="x_content">
         <br />
 
-        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{ (@$sliders)? route('admin.sliders.update',$sliders->id) : route('admin.sliders.store')}}" method="POST" enctype="multipart/form-data">
+        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{ (@$sliders)? route('SALYANPOSTAL22200.sliders.update',$sliders->id) : route('SALYANPOSTAL22200.sliders.store')}}" method="POST" enctype="multipart/form-data">
 			@csrf
       @if(@$sliders)
           @method('PUT')
@@ -54,7 +54,7 @@
           <div class="ln_solid"></div>
           <div class="item form-group">
             <div class="col-md-6 col-sm-6 offset-md-5">
-              <a href="{{ route('admin.sliders.index')}}" class="btn btn-secondary" type="button">Cancel</a>
+              <a href="{{ route('SALYANPOSTAL22200.sliders.index')}}" class="btn btn-secondary" type="button">Cancel</a>
 			  <button class="btn btn-primary" type="reset">Reset</button>
               <button type="submit" class="btn btn-success">Submit</button>
             </div>

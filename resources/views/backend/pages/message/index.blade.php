@@ -46,11 +46,11 @@
                       <td>{{$message->phone}}</td>
                       <td>{{$message->subject}}</td>
                       <td>
-                        <a href="{{route('admin.seenMessage',$message->id)}}" class="btn btn-primary btn-sm">View</a>
+                        <a href="{{route('SALYANPOSTAL22200.seenMessage',$message->id)}}" class="btn btn-primary btn-sm">View</a>
 
                         <a href="javascript:void(0);" class="btn btn-danger btn-sm" onclick="deleteRow('postalRate{{$message->id }}')">Delete</a>
 
-                        <form id="postalRate{{$message->id}}" action="{{route('admin.deleteMessage',$message->id)}}" method="post">
+                        <form id="postalRate{{$message->id}}" action="{{route('SALYANPOSTAL22200.deleteMessage',$message->id)}}" method="post">
                           @csrf
                           @method('DELETE')
                         </form>

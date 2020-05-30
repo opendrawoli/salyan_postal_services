@@ -46,7 +46,7 @@
                             <div class=" col-sm-4 emphasis">
                                 <a href="javascript:void(0);" class="btn btn-danger btn-sm" onclick="deleteRow('staff{{$staff->id }}')" title="Delete"><i class="fa fa-trash"></i>Delete</a>
 
-                                <form id="staff{{$staff->id}}" action="{{route('admin.staff.destroy',$staff->id)}}" method="post">
+                                <form id="staff{{$staff->id}}" action="{{route('SALYANPOSTAL22200.staff.destroy',$staff->id)}}" method="post">
                                   @csrf
                                   @method('DELETE')
                                 </form>

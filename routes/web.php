@@ -16,11 +16,16 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('SALYAN22200POSTAL',function(){
+	return view('auth.login');
+})->name('SALYAN22200POSTAL');
 
-Route::namespace('Backend')->prefix('admin')->as('admin.')->group( function(){
+Route::namespace('Backend')->prefix('SALYANPOSTAL22200')->as('SALYANPOSTAL22200.')->group( function(){ //->middleware('auth')
 	/* about Page */
+	Route::get('/dashboard',function(){
+		return view('backend.dashboard');
+	})->name('dashboard');
    	Route::get('/about','SinglePageController@getAbout')->name('getAbout');
 	Route::post('/about','SinglePageController@postAbout')->name('postAbout');
 	/* underneath Page */
@@ -70,8 +75,6 @@ Route::namespace('Backend')->prefix('admin')->as('admin.')->group( function(){
 	Route::get('/message','MessageController@message')->name('getMessage');
 	Route::delete('/message/{message}','MessageController@deleteMessage')->name('deleteMessage');
 	Route::get('/seenMessage/{message}','MessageController@seenMessage')->name('seenMessage');
-
-
 
 
 });

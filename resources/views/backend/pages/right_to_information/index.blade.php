@@ -46,10 +46,10 @@
                         <a href="{{asset($right->file)}}"  class="btn btn-info btn-sm" title="{{$right->title}}" download><i class="fa fa-download"></i> </a>
                       </td>
 
-                      <td><a href="{{route('admin.right.edit',$right->id) }}" class="btn btn-info btn-sm">Edit</a>
+                      <td><a href="{{route('SALYANPOSTAL22200.right.edit',$right->id) }}" class="btn btn-info btn-sm">Edit</a>
                         <a href="javascript:void(0);" class="btn btn-danger btn-sm" onclick="deleteRow('postalRate{{$right->id }}')">Delete</a>
 
-                        <form id="postalRate{{$right->id}}" action="{{route('admin.right.destroy',$right->id)}}" method="post">
+                        <form id="postalRate{{$right->id}}" action="{{route('SALYANPOSTAL22200.right.destroy',$right->id)}}" method="post">
                           @csrf
                           @method('DELETE')
                         </form>

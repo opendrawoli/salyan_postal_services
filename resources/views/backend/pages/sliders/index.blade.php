@@ -44,12 +44,12 @@
                       <td>{{$slider->title}}</td>
                       <td>{!! $slider->description !!}</td>
                       <td><img src="{{asset($slider->image)}}" class="img-thumbnail" height="100"  alt=""></td>
-                      <td><a href="{{route('admin.activeInactiveSlider',$slider->id)}}"><?php if($slider->status==1) echo '<span class="btn btn-primary">Active</span>'; else echo '<span class="btn btn-secondary">Inactive</span>'; ?></a></td>
+                      <td><a href="{{route('SALYANPOSTAL22200.activeInactiveSlider',$slider->id)}}"><?php if($slider->status==1) echo '<span class="btn btn-primary">Active</span>'; else echo '<span class="btn btn-secondary">Inactive</span>'; ?></a></td>
 
-                      <td><a href="{{route('admin.sliders.edit',$slider->id) }}" class="btn btn-info btn-sm">Edit</a>
+                      <td><a href="{{route('SALYANPOSTAL22200.sliders.edit',$slider->id) }}" class="btn btn-info btn-sm">Edit</a>
                         <a href="javascript:void(0);" class="btn btn-danger btn-sm" onclick="deleteRow('postalRate{{$slider->id }}')">Delete</a>
 
-                        <form id="postalRate{{$slider->id}}" action="{{route('admin.sliders.destroy',$slider->id)}}" method="post">
+                        <form id="postalRate{{$slider->id}}" action="{{route('SALYANPOSTAL22200.sliders.destroy',$slider->id)}}" method="post">
                           @csrf
                           @method('DELETE')
                         </form>
