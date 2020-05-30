@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 use File;
+use Str;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
 
@@ -63,6 +64,7 @@ class UsersController extends Controller
         $user->file = $path;
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->description_english =Str::limit($request->description_english,200);
         $user->password= Hash::make($request->password);
         $user->save();
         return back()->with('message','Successfully stored');
@@ -101,6 +103,7 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
+      
         $request->validate([
             'name' => 'required',
             'email' => 'email|required|unique:users,email,'.$id,
@@ -120,6 +123,7 @@ class UsersController extends Controller
         $user->file = $request->hasFile('file')?$path:$user->file;
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->password=Hash::make($request->password);
         $user->save();
         return back()->with('message','Successfully Updated');
     }

@@ -22,7 +22,7 @@
       <div class="x_content">
         <br />
 
-        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{route('admin.user.store')}}" method="POST" enctype="multipart/form-data">
+        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{route('SALYANPOSTAL22200.user.store')}}" method="POST" enctype="multipart/form-data">
 			@csrf
           @method('POST')
 
@@ -30,37 +30,27 @@
       
 		<div class="row">
 			<div class="col-md-6">
-       <label class="col-form-label {{ $errors->has('slug') ? 'has-error' : '' }} " for="first-name"><strong>Name:</strong><span class="required">*</span>
+       <label class="col-form-label" for="first-name"><strong>Name:</strong><span class="required">*</span>
        </label>
-       <input type="text" name="name" class="form-control " id="name">
-         @if($errors->has('name'))
-                <span class="help-block">{{ $errors->first('name') }}</span>
-            @endif
-
-       <label class="col-form-label " for="first-name"><strong>Password:</strong><span class="required">*</span>
+       <input type="text" name="name" class="form-control " id="name" value="{{old('name')}}">
+       <label class="col-form-label " for="first-name"><strong>Email:</strong><span class="required">*</span>
        </label>
-       <input type="text" name="password" class="form-control " id="password">
+       <input type="email" name="email" class="form-control " id="email"  autocomplete="off">
 
-       <label for="heard"><h6><strong>select user *:</strong></h6></label>
-       <select id="role" class="form-control" name="role">
-        <option value=""> ...select user....</option>
-        <option value="1">Admin</option>
-        <option value="2">Editor</option>
-        <option value="3">Author</option>
-      </select>
+       
     </div>
       <div class="col-md-6">
-                <label class="col-form-label " for="first-name"><strong>Email:</strong><span class="required">*</span>
+              <label class="col-form-label " for="first-name"><strong>Password:</strong><span class="required">*</span>
               </label>
-               <input type="email" name="email" class="form-control " id="email">
+              <input type="password" name="password" class="form-control " id="password"  autocomplete="off">
 
                <label class="col-form-label " for="first-name"><strong>Confirm Password:</strong><span class="required">*</span>
               </label>
-               <input type="text" name="password_confirmation" class="form-control " id="password_confirmation">
-
-                <label class="col-form-label " for="first-name"><strong>Image:</strong><span class="required">*</span>
+               <input type="password" name="password_confirmation" class="form-control " id="password_confirmation">
+            
+               <label class="col-form-label " for="first-name"><strong>Image:</strong><span class="required">*</span>
               </label>
-               <input type="file" name="file" class="form-control " id="file">
+              <input type="file" name="file" class="form-control " id="file">
       </div>
 		</div>
                    
@@ -82,8 +72,8 @@
 
 @section('scripts')
 <script>
- $('#successmsg').fadeOut(2000);
- $('#errmsg').fadeOut(2000);
-    </script>
+   $('#successmsg').fadeOut(1200);
+     $('#errmsg').fadeOut(1200);
+</script>
 
 @endsection

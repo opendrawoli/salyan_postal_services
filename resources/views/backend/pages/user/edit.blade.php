@@ -21,76 +21,64 @@
       </div>
       <div class="x_content">
         <br />
+        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{route('SALYANPOSTAL22200.user.update',$user->id)}}" method="POST" enctype="multipart/form-data">
+         @csrf
+         @method('PUT')
 
-<<<<<<< HEAD
-        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{route('admin.user.update',$user->id)}}" method="POST" enctype="multipart/form-data">
-=======
-        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{route('SALYANPOSTAL22200.user.update',$user->id)}}" method="POST">
->>>>>>> 92de31a064d52d4c4eb2b2eebe6b8e3b842164b7
-			@csrf
-          @method('PUT')
+         @include('backend.common.message')
+         <div class="row">
+           <div class="col-md-6">
+             <label class="col-form-label" for="first-name"><h6><strong>Name*:</strong></h6><span class="required"></span>
+             </label>
+             <input type="text" name="name" class="form-control " id="name" value="{{$user->name}}">
 
-			@include('backend.common.message')
-		<div class="row">
-			<div class="col-md-6">
-	           	<label class="col-form-label " for="first-name"><strong>Name:</strong><span class="required">*</span>
-	            </label>
-	            <input type="text" name="name" class="form-control " id="name" value="{{$user->name}}">
+             <label class="col-form-label " for="first-name"><h6><strong>Password*:</strong></h6><span class="required"></span>
+            </label>
+            <input type="password" name="password" class="form-control " id="password">
+             <label class="col-form-label " for="first-name"><h6><strong>Confirm Password*:</strong></h6><span class="required"></span>
+            </label>
+            <input type="password" name="password_confirmation" class="form-control " id="password_confirmation">
+           </div>
+           <div class="col-md-6">
+           
+              <label class="col-form-label " for="first-name"><h6><strong>Email*:</strong></h6><span class="required"></span>
+            </label>
+            <input type="email" name="email" class="form-control " id="email" value="{{$user->email}}">
+           
 
-                <label for="heard"><h6><strong>select user *:</strong></h6></label>
-                          <select id="role" class="form-control" name="role">
-                            <option value=""> ...select user....</option>
-                            <option value="1" @if($user->role==1)? selected @endif
-                              {{ old('role') }}>Admin</option>
-                            <option value="2"@if($user->role==2)? selected @endif
-                              {{ old('role') }}>Editor</option>
-                            <option value="3"@if($user->role==3)? selected @endif
-                              {{ old('role') }}>Author</option>
-                          </select>
-	                     
-			</div>
-      <div class="col-md-6">
-                <label class="col-form-label " for="first-name"><strong>Email:</strong><span class="required">*</span>
-              </label>
-               <input type="email" name="email" class="form-control " id="email" value="{{$user->email}}">
+                  <label class="col-form-label " for="first-name"><h6><strong>फोटो*:</strong></h6><span class="required"></span>
+                  </label>
+                  <input type="file" name="file" class="form-control" id="file" value="{{$user->file}}"><br>
+                  @if($user->file)
+                  <div class="col-md-9">
+                    <img src="{{ asset($user->file) }}" style="width: 85px;">
+                  </div>
+                  @endif
 
-            <label class="col-form-label " for="first-name"><strong>फोटो</strong><span class="required">*</span>
-              </label>
-              <input type="file" name="file" class="form-control" id="file" value="{{$user->file}}"><br>
-            @if($user->file)
-          <div class="col-md-9">
-            <img src="{{ asset($user->file) }}" style="width: 150px;">
+                </div>
+
+              </div>
+
+              <div class="ln_solid"></div>
+              <div class="item form-group">
+                <div class="col-md-6 col-sm-6 offset-md-5">
+                  <a href="{{route('SALYANPOSTAL22200.user.index')}}" class="btn btn-secondary" type="button">Back</a>
+                  <button class="btn btn-primary" type="reset">Reset</button>
+                  <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+              </div>
+
+            </form>
           </div>
-          @endif
-              
-      </div>
-	
-		</div>
-                   
-          <div class="ln_solid"></div>
-          <div class="item form-group">
-            <div class="col-md-6 col-sm-6 offset-md-5">
-<<<<<<< HEAD
-              <a href="{{route('admin.user.index')}}" class="btn btn-secondary" type="button">Back</a>
-=======
-              <a href="{{route('SALYANPOSTAL22200.user.index')}}" class="btn btn-secondary" type="button">Cancel</a>
->>>>>>> 92de31a064d52d4c4eb2b2eebe6b8e3b842164b7
-			         <button class="btn btn-primary" type="reset">Reset</button>
-              <button type="submit" class="btn btn-success">Submit</button>
-            </div>
-          </div>
-
-        </form>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-@endsection
+    @endsection
 
-@section('scripts')
-<script>
- $('#successmsg').fadeOut(1200);
- $('#errmsg').fadeOut(1200);
-    </script>
+    @section('scripts')
+    <script>
+    $('#successmsg').fadeOut(1200);
+     $('#errmsg').fadeOut(1200);
+   </script>
 
-@endsection
+   @endsection

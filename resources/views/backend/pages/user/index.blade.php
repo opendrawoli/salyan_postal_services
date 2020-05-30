@@ -3,7 +3,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>कर्मचारी विवरण</h3>
+                <h3>User विवरण</h3>
               </div>
             </div>
 
@@ -27,8 +27,7 @@
                             <div class="left col-md-7 col-sm-7">
                               <h2>{{$user->name}}</h2>
                               <ul class="list-unstyled">
-                                <li> इमेल:{{$user->email}} </li>
-                                <li><i class="fa fa-phone"></i> फोन:{{$user->phone}} </li>
+                               <p><strong>Email: </strong> {{$user->email}} </p>
                               </ul>
                             </div>
                             <div class="right col-md-5 col-sm-5 text-center">
@@ -37,12 +36,12 @@
                           </div>
                           <div class=" profile-bottom text-center">
                              <div class=" col-sm-2 emphasis">
-                                <a href="{{route('admin.user.edit',$user->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit" title="Edit">Edit</i></a>
+                                <a href="{{route('SALYANPOSTAL22200.user.edit',$user->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit" title="Edit">Edit</i></a>
                             </div>
                             <div class=" col-sm-4 emphasis">
                                 <a href="javascript:void(0);" class="btn btn-danger btn-sm" onclick="deleteRow('user{{$user->id }}')" title="Delete"><i class="fa fa-trash"></i>Delete</a>
 
-                                <form id="user{{$user->id}}" action="{{route('admin.user.destroy',$user->id)}}" method="post">
+                                <form id="user{{$user->id}}" action="{{route('SALYANPOSTAL22200.user.destroy',$user->id)}}" method="post">
                                   @csrf
                                   @method('DELETE')
                                 </form>

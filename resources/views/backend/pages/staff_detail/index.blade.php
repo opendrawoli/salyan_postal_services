@@ -30,8 +30,8 @@
                                @endif</i></h4>
                             <div class="left col-md-7 col-sm-7">
                               <h2>{{$staff->name}}</h2>
+                              <p><strong>Email: </strong>{{$staff->email}} </p>
                               <ul class="list-unstyled">
-                                <li> इमेल:{{$staff->email}} </li>
                                 <li><i class="fa fa-phone"></i> फोन:{{$staff->phone}} </li>
                               </ul>
                             </div>
@@ -41,7 +41,7 @@
                           </div>
                           <div class=" profile-bottom text-center">
                              <div class=" col-sm-2 emphasis">
-                                <a href="{{route('admin.staff.edit',$staff->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit" title="Edit">Edit</i></a>
+                                <a href="{{route('SALYANPOSTAL22200.staff.edit',$staff->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit" title="Edit">Edit</i></a>
                             </div>
                             <div class=" col-sm-4 emphasis">
                                 <a href="javascript:void(0);" class="btn btn-danger btn-sm" onclick="deleteRow('staff{{$staff->id }}')" title="Delete"><i class="fa fa-trash"></i>Delete</a>
