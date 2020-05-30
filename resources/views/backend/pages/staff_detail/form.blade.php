@@ -48,7 +48,7 @@
                           <select id="designation" class="form-control" name="designation">
                             <option value=""> ...पद छान्नुहोस्....</option>
                             <option value="0" @if(@$staff->designation==0)? selected @endif>कार्यलय प्रमुख</option>
-                            <option value="1"@if(@$staff->designation==1)? selected @endif>नायब सुब्बा</option>
+                            <option value="1"@if(@$staff->designation==1)? selected @endif>नायब सुब्बा/सूचना अधिकारी</option>
 
                             @foreach($designations as $designation)
                             <option value="{{ @$designation->designation }}"
@@ -80,11 +80,8 @@
           <div class="ln_solid"></div>
           <div class="item form-group">
             <div class="col-md-6 col-sm-6 offset-md-5">
-<<<<<<< HEAD
-              <a href="{{route('admin.staff.index')}}" class="btn btn-secondary" type="button">Back</a>
-=======
-              <a href="{{route('SALYANPOSTAL22200.staff.index')}}" class="btn btn-secondary" type="button">Cancel</a>
->>>>>>> 92de31a064d52d4c4eb2b2eebe6b8e3b842164b7
+
+              <a href="{{route('SALYANPOSTAL22200.staff.index')}}" class="btn btn-secondary" type="button">Back</a>
               <button class="btn btn-danger" type="reset">Reset</button>
               <button type="submit" class="btn btn-success">Submit</button>
             </div>

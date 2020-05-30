@@ -17,11 +17,9 @@ class CreateNewsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
-            $table->text('description_nepali')->nullable();
             $table->string('nepali_date');
             $table->string('notice_type');
             $table->string('file')->nullable();
-            $table->string('thumbnail')->nullable();
             $table->timestamps();
         });
     }

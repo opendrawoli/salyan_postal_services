@@ -24,7 +24,7 @@
                         <div class="well profile_view">
                           <div class="col-sm-12">
                             <h4 class="brief"><i>@if($staff->designation==0) कार्यलय प्रमुख
-                              @elseif($staff->designation==1) नायब सुब्बा
+                              @elseif($staff->designation==1) नायब सुब्बा/सूचना अधिकारी
                               @else
                               {{$staff->designation}} 
                                @endif</i></h4>
@@ -41,7 +41,7 @@
                           </div>
                           <div class=" profile-bottom text-center">
                              <div class=" col-sm-2 emphasis">
-                                <a href="{{route('admin.staff.edit',$staff->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit" title="Edit">Edit</i></a>
+                                <a href="{{route('SALYANPOSTAL22200.staff.edit',$staff->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit" title="Edit">Edit</i></a>
                             </div>
                             <div class=" col-sm-4 emphasis">
                                 <a href="javascript:void(0);" class="btn btn-danger btn-sm" onclick="deleteRow('staff{{$staff->id }}')" title="Delete"><i class="fa fa-trash"></i>Delete</a>

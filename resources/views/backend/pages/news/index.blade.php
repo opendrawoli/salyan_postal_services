@@ -41,7 +41,6 @@
                             <th>शीर्षक</th>
                             <th>सूचना प्रकार </th>
                             <th>मिति</th>
-                            <th>फोटो</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -64,12 +63,11 @@
 
                              </td>
                             <td>{{$news->nepali_date}} </td>
-                            <td>
-                              <img src="{{asset($news->thumbnail)}}" height="75" width="75" alt="">
-                            </td>
+                           
                            <td>
                             @if($news->file)
                             <a href="{{asset($news->file)}}" class="btn btn-info btn-sm" title="{{$news->title}}" download><i class="fa fa-download" ></i></a>
+                             <a href="{{asset($news->file)}}" class="btn btn-info btn-sm" title="{{$news->title}}" target="_blank"><i class="fa fa-eye" ></i></a>
                             @endif
                              <a href="{{route('SALYANPOSTAL22200.news.edit',$news->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit" title="Edit"></i></a>
                                 <a href="javascript:void(0);" class="btn btn-danger btn-sm" onclick="deleteRow('news{{$news->id }}')" title="Delete"><i class="fa fa-trash"></i></a>

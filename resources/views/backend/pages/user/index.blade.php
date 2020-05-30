@@ -37,12 +37,12 @@
                           </div>
                           <div class=" profile-bottom text-center">
                              <div class=" col-sm-2 emphasis">
-                                <a href="{{route('admin.user.edit',$user->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit" title="Edit">Edit</i></a>
+                                <a href="{{route('SALYANPOSTAL22200.user.edit',$user->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit" title="Edit">Edit</i></a>
                             </div>
                             <div class=" col-sm-4 emphasis">
                                 <a href="javascript:void(0);" class="btn btn-danger btn-sm" onclick="deleteRow('user{{$user->id }}')" title="Delete"><i class="fa fa-trash"></i>Delete</a>
 
-                                <form id="user{{$user->id}}" action="{{route('admin.user.destroy',$user->id)}}" method="post">
+                                <form id="user{{$user->id}}" action="{{route('SALYANPOSTAL22200.user.destroy',$user->id)}}" method="post">
                                   @csrf
                                   @method('DELETE')
                                 </form>

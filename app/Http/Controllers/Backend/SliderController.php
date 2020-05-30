@@ -55,6 +55,7 @@ class SliderController extends Controller
         $slider->title       = $request->title;;
         $slider->description       = $request->description;;
         $slider->image     = $path;
+        $slider->status     = 0;
         $slider->save();
         return back()->with('message','Added');
     }

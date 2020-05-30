@@ -16,22 +16,22 @@ class NewsController extends Controller
     public function index(Request $request)
     {
      if (($status = $request->get('status')) && $status == 'प्रेस विज्ञप्ति'){
-        $news = News::where('notice_type',5)->get();
+        $news = News::where('notice_type',5)->orderBy('nepali_date','desc')->get();
      }
      elseif($status=='समाचार'){
-        $news = News::where('notice_type',1)->get();
+        $news = News::where('notice_type',1)->orderBy('nepali_date','desc')->get();
          } 
           elseif($status=='बोलपत्र'){
-        $news = News::where('notice_type',2)->get();
+        $news = News::where('notice_type',2)->orderBy('nepali_date','desc')->get();
          } 
          elseif($status=='परिपत्र'){
-         $news = News::where('notice_type',3)->get();
+         $news = News::where('notice_type',3)->orderBy('nepali_date','desc')->get();
          }
          elseif($status=='सूचना'){
-        $news = News::where('notice_type',4)->get();
+        $news = News::where('notice_type',4)->orderBy('nepali_date','desc')->get();
          }
          else{
-            $news = News::all();
+            $news = News::orderBy('nepali_date','desc')->get();
          }
          $statusList = $this->statusList($request);
 
@@ -79,10 +79,9 @@ public function statusList($request){
             'slug'              => 'required|unique:news',
             'nepali_date'       => 'required',
             'notice_type'       => 'required',
-            'thumbnail'         => 'thumbnail|mimes:jpeg,png,jpg|max:2048',
+            'thumbnail'         => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
         $path='';
-        $path1='';
          $news = new News(); 
         if($request->hasFile('file'))
         {
@@ -91,18 +90,10 @@ public function statusList($request){
            $name = $name.$extension;
            $path = $request->file->move('assets/news', $name);
          }
-         if($request->hasFile('thumbnail'))
-        {
-           $extension = ".".$request->thumbnail->getClientOriginalExtension();
-           $name = basename($request->thumbnail->getClientOriginalName(), $extension).time();
-           $name = $name.$extension;
-           $path1 = $request->thumbnail->move('assets/news', $name);
-         }
+        
         $news->file = $path;
-        $news->thumbnail = $path1;
         $news->title = $request->title;
         $news->slug = $request->slug;
-        $news->description_nepali = $request->description_nepali;
         $news->nepali_date = $request->nepali_date;
         $news->notice_type = $request->notice_type;
         $news->save();
@@ -145,8 +136,7 @@ public function statusList($request){
             'title'             => 'required',
             'slug'              => 'required|unique:news,slug,' . $id,
             'nepali_date'       => 'required',
-            'notice_type'       => 'required',
-            'thumbnail'         => 'image|mimes:jpeg,png,jpg|max:2048',
+            'notice_type'       => 'required'
         ]);
         $path='';
         $path1='';
@@ -159,19 +149,10 @@ public function statusList($request){
            $name = $name.$extension;
            $path = $request->file->move('assets/news', $name);
          }
-         if($request->hasFile('thumbnail'))
-        {
-             File::delete($news->thumbnail);
-           $extension = ".".$request->thumbnail->getClientOriginalExtension();
-           $name = basename($request->thumbnail->getClientOriginalName(), $extension).time();
-           $name = $name.$extension;
-           $path1 = $request->thumbnail->move('assets/news', $name);
-         }
+        
        $news->file = $request->hasFile('file')?$path:$news->file;
-       $news->thumbnail = $request->hasFile('thumbnail')?$path1:$news->thumbnail;
         $news->title = $request->title;
         $news->slug = $request->slug;
-        $news->description_nepali = $request->description_nepali;
         $news->nepali_date = $request->nepali_date;
         $news->notice_type = $request->notice_type;
         $news->save();
