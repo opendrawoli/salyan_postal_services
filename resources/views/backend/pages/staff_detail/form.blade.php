@@ -48,7 +48,7 @@
                           <select id="designation" class="form-control" name="designation">
                             <option value=""> ...पद छान्नुहोस्....</option>
                             <option value="0" @if(@$staff->designation==0)? selected @endif>कार्यलय प्रमुख</option>
-                            <option value="1"@if(@$staff->designation==1)? selected @endif>नायब सुब्बा</option>
+                            <option value="1"@if(@$staff->designation==1)? selected @endif>नायब सुब्बा/सूचना अधिकारी</option>
 
                             @foreach($designations as $designation)
                             <option value="{{ @$designation->designation }}"

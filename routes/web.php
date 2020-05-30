@@ -21,7 +21,7 @@ Route::get('SALYAN22200POSTAL',function(){
 	return view('auth.login');
 })->name('SALYAN22200POSTAL');
 
-Route::namespace('Backend')->prefix('SALYANPOSTAL22200')->as('SALYANPOSTAL22200.')->group( function(){ //->middleware('auth')
+Route::namespace('Backend')->prefix('SALYANPOSTAL22200')->as('SALYANPOSTAL22200.')->middleware('auth')->group( function(){ //
 	/* about Page */
 	Route::get('/dashboard',function(){
 		return view('backend.dashboard');

@@ -45,7 +45,6 @@ class StaffDetailController extends Controller
             'name'         => 'required',
             'designation'  => 'required',
             'phone'        => 'required',
-            'email'        => 'email',
              'file'        => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
         $path='';
@@ -101,8 +100,7 @@ class StaffDetailController extends Controller
         $request->validate([
             'name'         => 'required',
             'designation'  => 'required',
-            'phone'        => 'required|numeric',
-            'email'        => 'email',
+            'phone'        => 'required',
              'file'        => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
         $path='';

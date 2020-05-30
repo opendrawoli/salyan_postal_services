@@ -37,9 +37,7 @@
               </label>
               <input type="text" name="slug" class="form-control" id="slug" value="{{@$news->slug}} {{ old('slug') }}">
 
-               <label class="col-form-label " for="first-name"><h6><strong>बिबरण *:</strong></h6><span class="required"></span>
-              </label>
-              <textarea name="description_nepali">{{@$news->description_nepali}} {{ old('description_nepali') }}</textarea>  
+             
       </div>
       <div class="col-md-4">
               <label for="heard"><h6><strong>सूचना प्रकार *:</strong></h6></label>
@@ -62,14 +60,6 @@
               </label>
               <input type="file" name="file" class="form-control" id="file" value="{{@$news->file}} {{ old('file') }}"><br>
 
-              <label class="col-form-label " for="first-name"><h6><strong>फोटो *:</strong></h6><span class="required"></span>
-              </label>
-              <input type="file" name="thumbnail" class="form-control" id="thumbnail" value="{{@$news->thumbnail}} {{ old('thumbnail') }}"><br>
-            @if(@$news->thumbnail)
-          <div class="col-md-9">
-            <img src="{{ asset(@$news->thumbnail) }}" style="width: 150px;">
-          </div>
-          @endif
                   
       </div>
       

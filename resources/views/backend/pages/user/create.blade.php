@@ -35,7 +35,7 @@
        <input type="text" name="name" class="form-control " id="name" value="{{old('name')}}">
        <label class="col-form-label " for="first-name"><strong>Email:</strong><span class="required">*</span>
        </label>
-       <input type="email" name="email" class="form-control " id="email"  autocomplete="off">
+       <input type="email" name="email" class="form-control " id="email"  value="{{old('email')}}"autocomplete="off">
 
        
     </div>

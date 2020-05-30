@@ -24,7 +24,7 @@
                         <div class="well profile_view">
                           <div class="col-sm-12">
                             <h4 class="brief"><i>@if($staff->designation==0) कार्यलय प्रमुख
-                              @elseif($staff->designation==1) नायब सुब्बा
+                              @elseif($staff->designation==1) नायब सुब्बा/सूचना अधिकारी
                               @else
                               {{$staff->designation}} 
                                @endif</i></h4>
