@@ -27,27 +27,24 @@
 
          @include('backend.common.message')
          <div class="row">
-           <div class="col-md-6">
+           <div class="col-md-12">
              <label class="col-form-label" for="first-name"><h6><strong>Name*:</strong></h6><span class="required"></span>
              </label>
              <input type="text" name="name" class="form-control " id="name" value="{{$user->name}}">
 
-             <label class="col-form-label " for="first-name"><h6><strong>Password*:</strong></h6><span class="required"></span>
-            </label>
-            <input type="password" name="password" class="form-control " id="password">
-            
-             <label class="col-form-label " for="first-name"><h6><strong>Confirm Password*:</strong></h6><span class="required"></span>
-            </label>
-            <input type="password" name="password_confirmation" class="form-control " id="password_confirmation">
-           </div>
-           <div class="col-md-6">
-           
               <label class="col-form-label " for="first-name"><h6><strong>Email*:</strong></h6><span class="required"></span>
             </label>
             <input type="email" name="email" class="form-control " id="email" value="{{$user->email}}">
-           
 
-                  <label class="col-form-label " for="first-name"><h6><strong>फोटो*:</strong></h6><span class="required"></span>
+             <label class="col-form-label " for="first-name"><h6><strong>Password*:</strong></h6><span class="required"></span>
+            </label>
+            <input type="password" name="password" class="form-control " id="password">
+
+             <label class="col-form-label " for="first-name"><h6><strong>Confirm Password*:</strong></h6><span class="required"></span>
+            </label>
+            <input type="password" name="password_confirmation" class="form-control " id="password_confirmation">
+
+               <label class="col-form-label " for="first-name"><h6><strong>फोटो*:</strong></h6><span class="required"></span>
                   </label>
                   <input type="file" name="file" class="form-control" id="file" value="{{$user->file}}"><br>
                   @if($user->file)
@@ -57,9 +54,8 @@
                   @endif
 
                 </div>
-
-              </div>
-
+           </div>
+          
               <div class="ln_solid"></div>
               <div class="item form-group">
                 <div class="col-md-6 col-sm-6 offset-md-5">

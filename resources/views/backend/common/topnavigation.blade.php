@@ -6,13 +6,13 @@
         </div>
         <nav class="nav navbar-nav">
         <ul class=" navbar-right">
-        	<?php $currentUser = Auth::user() ?>
+        	<?php $currentUser = Auth::user(); ?>
           <li class="nav-item dropdown open" style="padding-left: 15px;">
             <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
               <img src="{{asset(@$currentUser->file)}}" alt="">{{@$currentUser->name}}
             </a>
             <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item"  href="javascript:;"> Profile</a>
+              <a class="dropdown-item"  href="{{route('SALYANPOSTAL22200.user.profile',$currentUser->id)}}"> Profile</a>
                <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

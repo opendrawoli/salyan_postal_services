@@ -93,6 +93,11 @@ class UsersController extends Controller
         $user = User::findOrFail($id);
        return view('backend.pages.user.edit',compact('user'));
     }
+     public function profile($id)
+    {
+        $user = User::findOrFail($id);
+       return view('backend.pages.user.profile',compact('user'));
+    }
 
     /**
      * Update the specified resource in storage.

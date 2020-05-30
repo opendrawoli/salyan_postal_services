@@ -20,7 +20,7 @@
 
                       <div class="clearfix"></div>
                     @foreach($staffs as $staff)
-                      <div class="col-md-4 col-sm-4  profile_details">
+                     <div class="col-md-4 col-sm-4  profile_details">
                         <div class="well profile_view">
                           <div class="col-sm-12">
                             <h4 class="brief"><i>@if($staff->designation==0) कार्यलय प्रमुख
@@ -28,23 +28,23 @@
                               @else
                               {{$staff->designation}} 
                                @endif</i></h4>
-                            <div class="left col-md-7 col-sm-7">
+                            <div class="left col-sm-8">
                               <h2>{{$staff->name}}</h2>
-                              <p><strong>Email: </strong>{{$staff->email}} </p>
+                             <p><strong>Email: </strong>{{$staff->email}} </p>
                               <ul class="list-unstyled">
-                                <li><i class="fa fa-phone"></i> फोन:{{$staff->phone}} </li>
+                                <li><i class="fa fa-phone"></i>  फोन:{{$staff->phone}} </li>
                               </ul>
                             </div>
-                            <div class="right col-md-5 col-sm-5 text-center">
+                            <div class="right col-sm-4 text-center">
                               <img src="{{asset($staff->file)}}" alt="" class="img-circle img-fluid">
                             </div>
                           </div>
-                          <div class=" profile-bottom text-center">
-                             <div class=" col-sm-2 emphasis">
-                                <a href="{{route('SALYANPOSTAL22200.staff.edit',$staff->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit" title="Edit">Edit</i></a>
-                            </div>
+                          <div class=" bottom text-center">
                             <div class=" col-sm-4 emphasis">
-                                <a href="javascript:void(0);" class="btn btn-danger btn-sm" onclick="deleteRow('staff{{$staff->id }}')" title="Delete"><i class="fa fa-trash"></i>Delete</a>
+                              <a href="{{route('SALYANPOSTAL22200.staff.edit',$staff->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit" title="Edit">Edit</i></a>
+                            </div>
+                             <div class=" col-sm-2 emphasis">
+                                <a href="javascript:void(0);" class="btn btn-danger btn-sm" onclick="deleteRow('staff{{$staff->id }}')" title="Delete">Delete</a>
 
                                 <form id="staff{{$staff->id}}" action="{{route('SALYANPOSTAL22200.staff.destroy',$staff->id)}}" method="post">
                                   @csrf
@@ -54,6 +54,7 @@
                           </div>
                         </div>
                       </div>
+
                       @endforeach
 
                   </div>
