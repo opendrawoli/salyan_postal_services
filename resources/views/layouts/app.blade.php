@@ -18,6 +18,101 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+    .popover-header {
+    color: #0000;
+    font-weight: bolder;
+}
+
+.bs-popover-bottom > .arrow::after,
+.bs-popover-auto[x-placement^="bottom"] > .arrow::after {
+    top: 1px;
+    border-width: 0 0.5rem 0.5rem 0.5rem;
+    border-bottom-color: #1be7aa;
+}
+
+.fadeInRight .modal-content {
+    min-height: 100vh;
+}
+
+.fadeInRight {
+    -webkit-animation-name: fadeInRight;
+    animation-name: fadeInRight;
+    width: 400px;
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@-webkit-keyframes fadeInRight {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.modal-dialog {
+    margin: 0;
+}
+
+.animated {
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.modal-header {
+    border-radius: 0;
+    background-color: #f7f7f7;
+    border-color: #d4d2d2;
+    align-items: center;
+    padding: 1.2rem;
+}
+
+.modal-content {
+    border-radius: 0;
+    border: 0;
+    -webkit-box-shadow: -12px 0 38px -14px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: -12px 0 38px -14px rgba(0, 0, 0, 0.25);
+    box-shadow: -12px 0 38px -14px rgba(0, 0, 0, 0.25);
+    background-clip: padding-box;
+}
+
+.modal-backdrop {
+    background-color: transparent;
+}
+
+.modal-button-container {
+    margin: 0 auto;
+    width: 90%;
+    max-width: 300px;
+}
+
+.sidebar-menu-list .list-group .list-group-item.active {
+    background-color: #00b5b8 !important;
+    color: #fff;
+}
+
+    </style>
 </head>
 <body>
     <div id="app">
